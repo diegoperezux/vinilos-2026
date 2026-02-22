@@ -49,11 +49,9 @@ export default function NowPlaying() {
       aria-label="Ver perfil de Last.fm"
     >
       <span className="now-playing-status">
-        {track.nowPlaying && (
-          <span className="now-playing-bars" aria-hidden>
-            <span /><span /><span /><span />
-          </span>
-        )}
+        <span className="now-playing-bars" aria-hidden>
+          <span /><span /><span /><span />
+        </span>
         {track.nowPlaying ? 'Escuchando ahora' : 'Última escucha'}
       </span>
       <span className="now-playing-title">{track.title}</span>
