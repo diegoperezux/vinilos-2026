@@ -558,9 +558,10 @@
   width: 160px;
   height: 160px;
   border-radius: 6px;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   z-index: 1;
+  background: #1a1a1a;
 }
 
 .card-cover {
@@ -593,11 +594,12 @@
   z-index: 0;
   --disc-start: 70px;
   --disc-end: 160px;
-  transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+  animation: discSlideOut 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
 }
 
-.card-disc-out {
-  left: var(--disc-end);
+@keyframes discSlideOut {
+  from { left: var(--disc-start); }
+  to   { left: var(--disc-end); }
 }
 
 /* --- Vinyl disc (in card) --- */
