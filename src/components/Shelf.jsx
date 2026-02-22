@@ -8,6 +8,48 @@ function colsForWidth(w) {
   return 4;
 }
 
+function ShelfRow({ rowVinyls, slotsPerRow, onSelectVinyl, index }) {
+  const rowRef = useRef(null);
+  const [visible, setVisible] = useState(index < 3);
+
+  useEffect(() => {
+    if (index < 3) return;
+    const el = rowRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [index]);
+
+  return (
+    <div
+      ref={rowRef}
+      className={`shelf-row${visible ? ' shelf-row--visible' : ''}`}
+    >
+      <div className="shelf-slots" style={{ '--cols': slotsPerRow }}>
+        {rowVinyls.map((vinyl, i) => (
+          <Vinyl key={i} vinyl={vinyl} onClick={onSelectVinyl} />
+        ))}
+      </div>
+      <div className="shelf-plank" aria-hidden>
+        <div className="shelf-plank-top" />
+        <div className="shelf-plank-face">
+          <div className="shelf-plank-line" />
+        </div>
+        <div className="shelf-plank-shadow" />
+      </div>
+    </div>
+  );
+}
+
 function Shelf({ vinyls, onSelectVinyl }) {
   const [slotsPerRow, setSlotsPerRow] = useState(4);
   const containerRef = useRef(null);
@@ -22,30 +64,22 @@ function Shelf({ vinyls, onSelectVinyl }) {
     return () => ro.disconnect();
   }, []);
 
-  const displayed = vinyls.slice(0, 12);
   const rows = [];
-  for (let i = 0; i < displayed.length; i += slotsPerRow) {
-    rows.push(displayed.slice(i, i + slotsPerRow));
+  for (let i = 0; i < vinyls.length; i += slotsPerRow) {
+    rows.push(vinyls.slice(i, i + slotsPerRow));
   }
 
   return (
     <div className="shelf-page">
       <div className="shelf-container" ref={containerRef}>
         {rows.map((rowVinyls, rowIndex) => (
-          <div key={rowIndex} className="shelf-row">
-            <div className="shelf-slots" style={{ '--cols': slotsPerRow }}>
-              {rowVinyls.map((vinyl, i) => (
-                <Vinyl key={i} vinyl={vinyl} onClick={onSelectVinyl} />
-              ))}
-            </div>
-            <div className="shelf-plank" aria-hidden>
-              <div className="shelf-plank-top" />
-              <div className="shelf-plank-face">
-                <div className="shelf-plank-line" />
-              </div>
-              <div className="shelf-plank-shadow" />
-            </div>
-          </div>
+          <ShelfRow
+            key={rowIndex}
+            index={rowIndex}
+            rowVinyls={rowVinyls}
+            slotsPerRow={slotsPerRow}
+            onSelectVinyl={onSelectVinyl}
+          />
         ))}
       </div>
     </div>

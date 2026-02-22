@@ -315,7 +315,7 @@
 .shelf-container {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 /* ─── Shelf row ──────────────────────────────────────────── */
@@ -323,13 +323,21 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.shelf-row--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ─── Vinyl slots ────────────────────────────────────────── */
 .shelf-slots {
   display: grid;
   grid-template-columns: repeat(var(--cols, 4), 1fr);
-  gap: 1rem;
+  gap: 0rem;
   align-items: flex-end;
   padding: 0;
   position: relative;
@@ -877,10 +885,10 @@
     padding: 2rem 1.25rem 4rem;
   }
 
-  .shelf-container { gap: 2.5rem; }
+  .shelf-container { gap: 1rem; }
 
   .shelf-slots {
-    gap: 0.5rem;
+    gap: 0rem;
   }
 
   .vinyl {

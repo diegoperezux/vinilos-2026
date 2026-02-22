@@ -61,17 +61,6 @@ function VinylDisc({ accentColor }) {
 
 function VinylCard({ vinyl, onClose, isClosing = false }) {
   const [accentColor, setAccentColor] = useState(null);
-  const [discOut, setDiscOut] = useState(false);
-
-  // Two rAF ensures the disc paints at --disc-start before the transition fires
-  useEffect(() => {
-    const raf1 = requestAnimationFrame(() => {
-      const raf2 = requestAnimationFrame(() => setDiscOut(true));
-      return () => cancelAnimationFrame(raf2);
-    });
-    return () => cancelAnimationFrame(raf1);
-  }, []);
-
   useEffect(() => {
     setAccentColor(null);
     if (vinyl.coverImage) {
@@ -112,7 +101,7 @@ function VinylCard({ vinyl, onClose, isClosing = false }) {
                 </div>
               )}
             </div>
-            <div className={`card-disc-wrap${discOut ? ' card-disc-out' : ''}`}>
+            <div className="card-disc-wrap">
               <VinylDisc accentColor={accentColor} />
             </div>
           </div>
