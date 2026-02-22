@@ -398,11 +398,12 @@
   transform: translateY(-8px);
 }
 
-.vinyl:hover .vinyl-tooltip {
+/* .vinyl:hover .vinyl-tooltip {
   opacity: 1;
-}
+} */
 
 .vinyl-tooltip {
+  display: none; /* temporarily hidden */
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
@@ -416,7 +417,6 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s;
-  display: flex;
   flex-direction: column;
   gap: 1px;
   z-index: 10;
@@ -723,7 +723,7 @@
   gap: 0.15rem;
 }
 
-.ficha-field-notes {
+.ficha-field-tags {
   grid-column: 1 / -1;
   margin-top: 0.25rem;
 }
@@ -744,7 +744,37 @@
   transition: color 0.3s, border-color 0.3s;
 }
 
-.ficha-value-notes { line-height: 1.35; }
+.ficha-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding-top: 0.25rem;
+}
+
+.ficha-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+/* 6-color cycling palette — light mode */
+.ficha-tag:nth-child(6n+1) { background: rgba(205, 92, 60, 0.13);  color: #8b3520; border-color: rgba(205, 92, 60, 0.3); }
+.ficha-tag:nth-child(6n+2) { background: rgba(80, 140, 90, 0.13);  color: #2d5e34; border-color: rgba(80, 140, 90, 0.3); }
+.ficha-tag:nth-child(6n+3) { background: rgba(70, 110, 180, 0.13); color: #1e3d7a; border-color: rgba(70, 110, 180, 0.3); }
+.ficha-tag:nth-child(6n+4) { background: rgba(195, 150, 30, 0.15); color: #7a5500; border-color: rgba(195, 150, 30, 0.35); }
+.ficha-tag:nth-child(6n+5) { background: rgba(145, 75, 160, 0.13); color: #5a1a6a; border-color: rgba(145, 75, 160, 0.3); }
+.ficha-tag:nth-child(6n+0) { background: rgba(30, 150, 135, 0.13); color: #0a5248; border-color: rgba(30, 150, 135, 0.3); }
+
+/* dark mode overrides */
+[data-theme="dark"] .ficha-tag:nth-child(6n+1) { background: rgba(205, 92, 60, 0.18);  color: #e8895c; border-color: rgba(205, 92, 60, 0.35); }
+[data-theme="dark"] .ficha-tag:nth-child(6n+2) { background: rgba(80, 140, 90, 0.18);  color: #6dbf7a; border-color: rgba(80, 140, 90, 0.35); }
+[data-theme="dark"] .ficha-tag:nth-child(6n+3) { background: rgba(70, 110, 180, 0.18); color: #7ea8e8; border-color: rgba(70, 110, 180, 0.35); }
+[data-theme="dark"] .ficha-tag:nth-child(6n+4) { background: rgba(195, 150, 30, 0.2);  color: #d4a830; border-color: rgba(195, 150, 30, 0.4); }
+[data-theme="dark"] .ficha-tag:nth-child(6n+5) { background: rgba(145, 75, 160, 0.18); color: #c06dd0; border-color: rgba(145, 75, 160, 0.35); }
+[data-theme="dark"] .ficha-tag:nth-child(6n+0) { background: rgba(30, 150, 135, 0.18); color: #4cc8b8; border-color: rgba(30, 150, 135, 0.35); }
 
 /* --- Tracks --- */
 .card-tracks { padding: 0 1.5rem 1.5rem; }

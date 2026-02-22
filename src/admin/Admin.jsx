@@ -10,7 +10,7 @@ const EMPTY_VINYL = {
   country: '',
   genre: '',
   purchaseDate: '',
-  notes: '',
+  tags: [],
   coverImage: '',
   spotify: '',
   tidal: '',
@@ -127,10 +127,64 @@ function FavoriteTracksEditor({ tracks, onChange }) {
   );
 }
 
+function TagsEditor({ tags, onChange }) {
+  const [input, setInput] = useState('');
+
+  function commit() {
+    const next = input.split(',').map((t) => t.trim()).filter(Boolean);
+    if (next.length === 0) return;
+    onChange([...tags, ...next]);
+    setInput('');
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      commit();
+    }
+  }
+
+  function removeTag(index) {
+    onChange(tags.filter((_, i) => i !== index));
+  }
+
+  return (
+    <div className="admin-tags">
+      {tags.length > 0 && (
+        <div className="admin-tags__pills">
+          {tags.map((tag, i) => (
+            <span key={i} className="admin-tag">
+              {tag}
+              <button
+                type="button"
+                className="admin-tag__remove"
+                onClick={() => removeTag(i)}
+                aria-label={`Eliminar ${tag}`}
+              >
+                ✕
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+      <input
+        className="admin-form__input"
+        type="text"
+        value={input}
+        placeholder="Favorito, Live, Edición limitada… (Enter para añadir)"
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        onBlur={commit}
+      />
+    </div>
+  );
+}
+
 function VinylForm({ initial, onSave, onCancel }) {
   const [form, setForm] = useState(() => ({
     ...EMPTY_VINYL,
     ...initial,
+    tags: initial?.tags ?? [],
     favoriteTracks: initial?.favoriteTracks ?? [],
     coverImage: initial?.coverImage ?? '',
     spotify: initial?.spotify ?? '',
@@ -173,15 +227,8 @@ function VinylForm({ initial, onSave, onCancel }) {
           <Field label="Fecha de lanzamiento" fieldName="purchaseDate" value={form.purchaseDate} onChange={set} placeholder="15/03/2024" />
         </div>
         <div className="admin-form__field">
-          <label className="admin-form__label" htmlFor="af-notes">Notas</label>
-          <textarea
-            id="af-notes"
-            className="admin-form__input admin-form__textarea"
-            value={form.notes ?? ''}
-            placeholder="Edición original. Portada con ligero desgaste…"
-            onChange={(e) => set('notes', e.target.value)}
-            rows={3}
-          />
+          <label className="admin-form__label">Descriptivos</label>
+          <TagsEditor tags={form.tags} onChange={(tags) => set('tags', tags)} />
         </div>
       </fieldset>
 

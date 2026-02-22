@@ -7,12 +7,19 @@ export const vinyls = [
     "country": "Estados Unidos",
     "genre": "Midwest Emo",
     "purchaseDate": "02/01/2026",
-    "notes": "",
+    "tags": [
+      "noisy",
+      "passionate",
+      "melancholic",
+      "raw",
+      "bittersweet"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/dc26d9ce183dd2060df3c951dfbd922a/14087604/manderley-you-come-in-seasons-and-depart-through-windy-gusts-and-blowing-leaves-Cover-Art.png",
     "spotify": "https://open.spotify.com/album/4yNIE93aqKA3NZbcdOdcJY",
     "tidal": "https://tidal.com/album/483970433",
     "youtube": "https://www.youtube.com/watch?v=U3yGHm5hNz8",
     "favoriteTracks": [],
+    "notes": "",
     "year": 1977,
     "catalogNo": "ABC-123",
     "price": "32 €",
@@ -26,12 +33,20 @@ export const vinyls = [
     "country": "Suecia",
     "genre": "Melodic Hardcore",
     "purchaseDate": "01/01/2026",
-    "notes": "",
+    "tags": [
+      "melodic",
+      "energetic",
+      "aggressive",
+      "raw",
+      "sentimental",
+      "introspective"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/e22d300fbe67ef37e0e7175de030eab0/14163209/feels-like-heaven-within-dreams-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/4IzQFnaEIseFzvMYgdQvWB",
     "tidal": "https://tidal.com/album/470314541",
     "youtube": null,
     "favoriteTracks": [],
+    "notes": "",
     "catalogNo": "XYZ-456",
     "year": 1959,
     "price": "28 €",
@@ -45,12 +60,19 @@ export const vinyls = [
     "country": "Estados Unidos - Canadá",
     "genre": "Drone Metal",
     "purchaseDate": "20/03/2026",
-    "notes": "",
+    "tags": [
+      "heavy",
+      "hypnotic",
+      "instrumental",
+      "dense",
+      "noisy"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/a3835e14a58e491ee5c09a3895a91384/14189430/earth-x-black-noi_e-geometry-of-murder-the-extra-capsular-extraction-inversions-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/4uL8k64OPNekMWcbbTN2ln",
     "tidal": null,
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlwyo6y6antmi",
@@ -60,12 +82,18 @@ export const vinyls = [
     "country": "Estados Unidos",
     "genre": "Metalcore",
     "purchaseDate": "23/01/2026",
-    "notes": "",
+    "tags": [
+      "melancholic",
+      "depressive",
+      "atmospheric",
+      "cold"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/8d80aa20b5e53b8c85152774641f1672/14214514/underoath-underoath-audiotree-from-nothing-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/5EnxwG2XiknJXXaVUIx7Oc",
     "tidal": "https://listen.tidal.com/album/483100413",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlwyrrfhy3ifu",
@@ -75,12 +103,15 @@ export const vinyls = [
     "country": "Estados Unidos",
     "genre": "Post-Rock",
     "purchaseDate": "01/01/2026",
-    "notes": "",
+    "tags": [
+      "instrumental"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/74e39b63681e074f98ccde458ba69c9f/14115836/the-sun-burns-bright-the-last-time-over-stillwater-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/3icJ5wFLaRlt4q3In5b6YF",
     "tidal": "https://tidal.com/album/480803832",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlwyu1letodw4",
@@ -90,12 +121,15 @@ export const vinyls = [
     "country": "Estados Unidos",
     "genre": "Rock Indie",
     "purchaseDate": "",
-    "notes": "",
+    "tags": [
+      "mellow"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/91ce77958c033f948298db36d7eda7e0/14206681/cat-power-redux-Cover-Art.png",
     "spotify": "https://open.spotify.com/album/0NtxsKpmMPDFh6GMXHIUBW",
     "tidal": "https://tidal.com/album/471589731",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlxxk653g2emq",
@@ -105,12 +139,18 @@ export const vinyls = [
     "country": "Reino Unido",
     "genre": "Indie Rock, Post-Punk",
     "purchaseDate": "09/01/2026",
-    "notes": "",
+    "tags": [
+      "talk-singing",
+      "deadpan",
+      "lethargic",
+      "introspective"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/35b05024b794a1d3f1fc6f2f1dd83ac5/14181654/dry-cleaning-secret-love-Cover-Art.png",
     "spotify": "https://open.spotify.com/album/79o6ZvFsXaAkL9MHCE6ts4",
     "tidal": "https://tidal.com/album/482925845",
     "youtube": "https://www.youtube.com/watch?v=_HzSjuRZYE0",
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlxxlzfoyfaao",
@@ -120,12 +160,19 @@ export const vinyls = [
     "country": "Canadá",
     "genre": "Art Rock",
     "purchaseDate": "11/01/2026",
-    "notes": "",
+    "tags": [
+      "anxious",
+      "longing",
+      "philosophical",
+      "progressive",
+      "lush"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/d85a747ab967ab24c135ee51a25fd06b/14137336/chromatose-porifera-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/4FuxUTE4FRUlFPaxAJQtm0",
     "tidal": "https://tidal.com/album/490694639",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlxxp8ab5li2t",
@@ -150,12 +197,17 @@ export const vinyls = [
     "country": "Francia",
     "genre": "Jazz Fusion",
     "purchaseDate": "29/12/2025",
-    "notes": "",
+    "tags": [
+      "warm",
+      "instrumental",
+      "improvisation"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/ad7c3fe04bee88166f91e26aee8c6302/14005624/muriel-grossmann-plays-the-music-of-mccoy-tyner-and-grateful-dead-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/10oJXOCULXK8hO4wQIXh8J",
     "tidal": "https://tidal.com/album/473203750",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlxxta4busey3",
@@ -165,12 +217,19 @@ export const vinyls = [
     "country": "Canadá",
     "genre": "Glitch Pop",
     "purchaseDate": "01/01/2026",
-    "notes": "",
+    "tags": [
+      "mellow",
+      "atmospheric",
+      "melancholic",
+      "ethereal",
+      "lonely"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/28b0754e865e03b7c89825b5a8c655e0/14115474/liam-aldous-no-city-could-sound-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/18yALy9Lw8PVTupbkv4ElM",
     "tidal": "https://tidal.com/album/487571301",
     "youtube": "https://www.youtube.com/watch?v=uR4U7IINrDQ",
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   },
   {
     "id": "mlxxw8mx4exe9",
@@ -180,11 +239,18 @@ export const vinyls = [
     "country": "Japón",
     "genre": "Folktronica",
     "purchaseDate": "01/01/2026",
-    "notes": "",
+    "tags": [
+      "female vocalist",
+      "longing",
+      "mellow",
+      "crackly",
+      "lonely"
+    ],
     "coverImage": "https://e.snmc.io/i/600/w/539ba8ca87c2a13a41d491f7a7517494/14181659/kaho-matsui-nightmare-intercom-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/2ten2ozCkcuMgpWNYWwOBC",
     "tidal": "https://tidal.com/album/483522125",
     "youtube": null,
-    "favoriteTracks": []
+    "favoriteTracks": [],
+    "notes": ""
   }
 ];

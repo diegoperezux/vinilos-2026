@@ -121,9 +121,17 @@ function VinylCard({ vinyl, onClose, isClosing = false }) {
             <Field label="PAÍS" value={vinyl.country} />
             <Field label="FECHA DE LANZAMIENTO" value={vinyl.purchaseDate} />
           </div>
-          <div className="ficha-field ficha-field-notes">
-            <span className="ficha-label">NOTAS</span>
-            <span className="ficha-value ficha-value-notes">{vinyl.notes ?? '—'}</span>
+          <div className="ficha-field ficha-field-tags">
+            <span className="ficha-label">DESCRIPTIVOS</span>
+            {vinyl.tags?.length > 0 ? (
+              <div className="ficha-tags">
+                {vinyl.tags.map((tag, i) => (
+                  <span key={i} className="ficha-tag">{tag}</span>
+                ))}
+              </div>
+            ) : (
+              <span className="ficha-value">—</span>
+            )}
           </div>
         </div>
 
