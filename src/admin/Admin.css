@@ -327,6 +327,26 @@
   padding-top: 0.25rem;
 }
 
+/* ─── Collection checkbox ──────────────────────────────────── */
+.admin-collection-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #374151;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.admin-collection-check input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #374151;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 /* ─── Favorite tracks ──────────────────────────────────────── */
 .admin-tracks {
   display: flex;

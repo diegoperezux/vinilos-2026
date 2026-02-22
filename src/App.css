@@ -744,6 +744,19 @@
   transition: color 0.3s, border-color 0.3s;
 }
 
+.ficha-collection-stamp {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ficha-label);
+  margin-top: 0.4rem;
+  opacity: 0.8;
+}
+
 .ficha-tags {
   display: flex;
   flex-wrap: wrap;

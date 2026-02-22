@@ -11,6 +11,7 @@ const EMPTY_VINYL = {
   genre: '',
   purchaseDate: '',
   tags: [],
+  inCollection: false,
   coverImage: '',
   spotify: '',
   tidal: '',
@@ -185,6 +186,7 @@ function VinylForm({ initial, onSave, onCancel }) {
     ...EMPTY_VINYL,
     ...initial,
     tags: initial?.tags ?? [],
+    inCollection: initial?.inCollection ?? false,
     favoriteTracks: initial?.favoriteTracks ?? [],
     coverImage: initial?.coverImage ?? '',
     spotify: initial?.spotify ?? '',
@@ -230,6 +232,14 @@ function VinylForm({ initial, onSave, onCancel }) {
           <label className="admin-form__label">Descriptivos</label>
           <TagsEditor tags={form.tags} onChange={(tags) => set('tags', tags)} />
         </div>
+        <label className="admin-collection-check">
+          <input
+            type="checkbox"
+            checked={form.inCollection}
+            onChange={(e) => set('inCollection', e.target.checked)}
+          />
+          <span>Añadido a mi colección definitiva</span>
+        </label>
       </fieldset>
 
       <fieldset className="admin-form__fieldset">

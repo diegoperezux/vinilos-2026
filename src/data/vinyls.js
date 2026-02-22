@@ -14,6 +14,7 @@ export const vinyls = [
       "raw",
       "bittersweet"
     ],
+    "inCollection": true,
     "coverImage": "https://e.snmc.io/i/600/w/dc26d9ce183dd2060df3c951dfbd922a/14087604/manderley-you-come-in-seasons-and-depart-through-windy-gusts-and-blowing-leaves-Cover-Art.png",
     "spotify": "https://open.spotify.com/album/4yNIE93aqKA3NZbcdOdcJY",
     "tidal": "https://tidal.com/album/483970433",
@@ -38,9 +39,9 @@ export const vinyls = [
       "energetic",
       "aggressive",
       "raw",
-      "sentimental",
-      "introspective"
+      "sentimental"
     ],
+    "inCollection": true,
     "coverImage": "https://e.snmc.io/i/600/w/e22d300fbe67ef37e0e7175de030eab0/14163209/feels-like-heaven-within-dreams-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/4IzQFnaEIseFzvMYgdQvWB",
     "tidal": "https://tidal.com/album/470314541",
@@ -106,6 +107,7 @@ export const vinyls = [
     "tags": [
       "instrumental"
     ],
+    "inCollection": true,
     "coverImage": "https://e.snmc.io/i/600/w/74e39b63681e074f98ccde458ba69c9f/14115836/the-sun-burns-bright-the-last-time-over-stillwater-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/3icJ5wFLaRlt4q3In5b6YF",
     "tidal": "https://tidal.com/album/480803832",
@@ -252,5 +254,141 @@ export const vinyls = [
     "youtube": null,
     "favoriteTracks": [],
     "notes": ""
+  },
+  {
+    "id": "mly37r676vmyy",
+    "album": "Meditations",
+    "artist": "David Shead",
+    "label": "Room40",
+    "country": "Estados Unidos",
+    "genre": "Ambient",
+    "purchaseDate": "09/01/2026",
+    "tags": [
+      "calm",
+      "spiritual",
+      "meditative"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/a3c0a5154815d7f246473dbbf384229a/14007550/david-shea-meditations-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/3rRtwzombO1wPPGxs3gfJF",
+    "tidal": "https://tidal.com/album/472783845",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3ar0g0ob4k",
+    "album": "III",
+    "artist": "Pullman",
+    "label": "Western Vinyl",
+    "country": "Estados Unidos",
+    "genre": "Post-Rock",
+    "purchaseDate": "09/01/2026",
+    "tags": [
+      "atmospheric",
+      "hypnotic",
+      "surreal",
+      "lush",
+      "pastoral"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/24f139ab3d1e7a688ee3f69169366732/13879898/pullman-iii-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/3JUndOxzHmRgkyHkVg7XuC",
+    "tidal": "https://tidal.com/album/463637670",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3d7igweshj",
+    "album": "Glass in the Mouth of the Sun",
+    "artist": "Calm and Secure",
+    "label": "Wax Vessel",
+    "country": "Estados Unidos",
+    "genre": "Mathcore",
+    "purchaseDate": "09/01/2026",
+    "tags": [
+      "harsh vocals",
+      "noisy",
+      "dark",
+      "dissonant",
+      "dense"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/cb1d910f94ecd9c7492f398bb8fdbbc9/14125007/calm-and-secure-glass-in-the-mouth-of-the-sun-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/6aED8Ik0pShzkfrniXnbxX",
+    "tidal": "https://tidal.com/album/487252745",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3evbo1605f",
+    "album": "Desert So Green",
+    "artist": "Winged Wheel",
+    "label": "12XU",
+    "country": "Estados Unidos",
+    "genre": "Post-Rock",
+    "purchaseDate": "09/01/2026",
+    "tags": [
+      "psychedelic"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/f2d8b9d98eaae1279645d4948ae3484d/13859566/winged-wheel-desert-so-green-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/4OvZQgDdhbd7oQ8gkoOmir",
+    "tidal": "https://tidal.com/album/486024524",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3gvc82rtvi",
+    "album": "Defiance",
+    "artist": "Youth Avoiders",
+    "label": "Destructure",
+    "country": "France",
+    "genre": "Hardcore Punk",
+    "purchaseDate": "07/01/2026",
+    "tags": [
+      "energetic"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/8b30ba874f8a86a5c613d2c92e336b32/14140491/youth-avoiders-defiance-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/7tBrrpQh8bRgYoa2p1ad5B",
+    "tidal": "https://tidal.com/album/482974410",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3lmimg5zf5",
+    "album": "Casino",
+    "artist": "Richard Sallis",
+    "label": "",
+    "country": "Australia",
+    "genre": "Post-Rock Revival",
+    "purchaseDate": "02/01/2026",
+    "tags": [
+      "melodic",
+      "poetic",
+      "passionate",
+      "sentimental",
+      "breakup"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/7a33cc3e463c3259a032af45bd0e5a36/14163204/richard-sallis-casino-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/3J6hkbtxm27AnIWa4N5Qnk",
+    "tidal": "https://tidal.com/album/463564100",
+    "youtube": null,
+    "favoriteTracks": []
+  },
+  {
+    "id": "mly3nvtg0jbmh",
+    "album": "Aguas Raras",
+    "artist": "Renatto Olivares",
+    "label": "",
+    "country": "Chile",
+    "genre": "Art Rock",
+    "purchaseDate": "05/01/2026",
+    "tags": [
+      "talk-singing",
+      "consciousness",
+      "narrative",
+      "energetic"
+    ],
+    "coverImage": "https://e.snmc.io/i/600/w/fd11ba46e4e68c93c042b2ecb1d1ee2f/14225782/renatto-olivares-aguas-raras-Cover-Art.jpg",
+    "spotify": "https://open.spotify.com/album/6qQ3GcbQxL0thwb96qPR2d",
+    "tidal": "https://tidal.com/album/485093899",
+    "youtube": null,
+    "favoriteTracks": []
   }
 ];

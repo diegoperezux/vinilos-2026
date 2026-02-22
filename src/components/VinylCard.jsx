@@ -133,6 +133,16 @@ function VinylCard({ vinyl, onClose, isClosing = false }) {
               <span className="ficha-value">—</span>
             )}
           </div>
+          {vinyl.inCollection && (
+            <div className="ficha-collection-stamp">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1"/>
+                <circle cx="6" cy="6" r="2" stroke="currentColor" strokeWidth="1"/>
+                <circle cx="6" cy="6" r="0.75" fill="currentColor"/>
+              </svg>
+              Añadido a mi colección
+            </div>
+          )}
         </div>
 
         {vinyl.favoriteTracks?.length > 0 && (
