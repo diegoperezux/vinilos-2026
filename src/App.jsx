@@ -105,7 +105,7 @@ function App() {
           <div className="site-footer-info">
             <span className="site-footer-name">Diego Perez</span>
             <a
-              href="#"
+              href="https://diegoperezux.framer.website/"
               className="site-footer-portfolio"
               target="_blank"
               rel="noopener noreferrer"
