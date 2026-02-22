@@ -830,6 +830,8 @@
 
 /* Responsive */
 @media (max-width: 640px) {
+  .vinyl-tooltip { display: none; }
+
   .layout {
     grid-template-columns: 1fr;
   }
