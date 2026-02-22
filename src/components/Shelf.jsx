@@ -52,6 +52,7 @@ function ShelfRow({ rowVinyls, slotsPerRow, onSelectVinyl, index }) {
 
 function Shelf({ vinyls, onSelectVinyl }) {
   const [slotsPerRow, setSlotsPerRow] = useState(4);
+  const [showHint, setShowHint] = useState(true);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -62,6 +63,15 @@ function Shelf({ vinyls, onSelectVinyl }) {
     });
     ro.observe(el);
     return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    function check() {
+      setShowHint(window.scrollY + window.innerHeight < document.documentElement.scrollHeight - 40);
+    }
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    return () => window.removeEventListener('scroll', check);
   }, []);
 
   const rows = [];
@@ -81,6 +91,12 @@ function Shelf({ vinyls, onSelectVinyl }) {
             onSelectVinyl={onSelectVinyl}
           />
         ))}
+      </div>
+      <div className={`shelf-scroll-hint${showHint ? ' shelf-scroll-hint--visible' : ''}`} aria-hidden>
+        <span className="shelf-scroll-hint__tooltip">Desliza para ver más</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
       </div>
     </div>
   );
