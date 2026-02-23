@@ -12,7 +12,7 @@ function Vinyl({ vinyl, onClick }) {
       </div>
       <div className="vinyl-inner">
         {vinyl.coverImage ? (
-          <img src={vinyl.coverImage} alt={`Portada de ${vinyl.album}`} className="vinyl-cover" />
+          <img src={vinyl.coverImage} alt={`Portada de ${vinyl.album}`} className="vinyl-cover" loading="lazy" />
         ) : (
           <div className="vinyl-placeholder">
             <span className="vinyl-placeholder-text">{vinyl.album}</span>

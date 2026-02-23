@@ -19,7 +19,16 @@ export const vinyls = [
     "spotify": "https://open.spotify.com/album/4yNIE93aqKA3NZbcdOdcJY",
     "tidal": "https://tidal.com/album/483970433",
     "youtube": "https://www.youtube.com/watch?v=U3yGHm5hNz8",
-    "favoriteTracks": [],
+    "favoriteTracks": [
+      {
+        "position": 4,
+        "title": "Your Eyes! (Only Created to Express Happiness)"
+      },
+      {
+        "position": 13,
+        "title": "Savor These Moments. These Final Moments."
+      }
+    ],
     "notes": "",
     "year": 1977,
     "catalogNo": "ABC-123",
@@ -169,6 +178,7 @@ export const vinyls = [
       "progressive",
       "lush"
     ],
+    "inCollection": true,
     "coverImage": "https://e.snmc.io/i/600/w/d85a747ab967ab24c135ee51a25fd06b/14137336/chromatose-porifera-Cover-Art.jpg",
     "spotify": "https://open.spotify.com/album/4FuxUTE4FRUlFPaxAJQtm0",
     "tidal": "https://tidal.com/album/490694639",
