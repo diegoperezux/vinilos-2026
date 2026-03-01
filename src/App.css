@@ -284,6 +284,12 @@
   transition: color 0.3s;
 }
 
+.site-footer-madein {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  transition: color 0.3s;
+}
+
 .site-footer-portfolio {
   font-size: 0.8rem;
   color: var(--color-footer-link);

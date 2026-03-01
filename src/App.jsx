@@ -69,14 +69,8 @@ function App() {
             <div className="site-footer-bottom">
               <div className="site-footer-info">
                 <span className="site-footer-name">Diego Perez</span>
-                <a
-                  href="https://diegoperezux.framer.website/"
-                  className="site-footer-portfolio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Portfolio →
-                </a>
+                <p className="site-footer-madein">Made in 2026</p>
+
               </div>
               <button className="theme-toggle" onClick={() => setIsDark(d => !d)} aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
                 {isDark ? <IconSun /> : <IconMoon />}
@@ -104,14 +98,8 @@ function App() {
         <div className="site-footer-bottom">
           <div className="site-footer-info">
             <span className="site-footer-name">Diego Perez</span>
-            <a
-              href="https://diegoperezux.framer.website/"
-              className="site-footer-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio →
-            </a>
+            <p className="site-footer-madein">Made in 2026</p>
+
           </div>
           <button className="theme-toggle" onClick={() => setIsDark(d => !d)} aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
             {isDark ? <IconSun /> : <IconMoon />}
