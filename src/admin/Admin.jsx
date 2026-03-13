@@ -1,21 +1,21 @@
-import { useState, useCallback } from 'react';
-import { loadVinyls, saveVinyls, exportVinyls } from '../utils/storage';
-import './Admin.css';
+import { useState, useCallback, useEffect } from "react";
+import { loadVinyls, saveVinyls, exportVinyls } from "../utils/storage";
+import "./Admin.css";
 
 const EMPTY_VINYL = {
-  id: '',
-  album: '',
-  artist: '',
-  label: '',
-  country: '',
-  genre: '',
-  purchaseDate: '',
+  id: "",
+  album: "",
+  artist: "",
+  label: "",
+  country: "",
+  genre: "",
+  purchaseDate: "",
   tags: [],
   inCollection: false,
-  coverImage: '',
-  spotify: '',
-  tidal: '',
-  youtube: '',
+  coverImage: "",
+  spotify: "",
+  tidal: "",
+  youtube: "",
   favoriteTracks: [],
 };
 
@@ -25,15 +25,24 @@ function generateId() {
 
 // Field must live OUTSIDE VinylForm — defining it inside causes React to treat
 // it as a new component type on every render, unmounting the input and losing focus.
-function Field({ label, fieldName, value, onChange, type = 'text', placeholder = '' }) {
+function Field({
+  label,
+  fieldName,
+  value,
+  onChange,
+  type = "text",
+  placeholder = "",
+}) {
   return (
     <div className="admin-form__field">
-      <label className="admin-form__label" htmlFor={`af-${fieldName}`}>{label}</label>
+      <label className="admin-form__label" htmlFor={`af-${fieldName}`}>
+        {label}
+      </label>
       <input
         id={`af-${fieldName}`}
         className="admin-form__input"
         type={type}
-        value={value ?? ''}
+        value={value ?? ""}
         placeholder={placeholder}
         onChange={(e) => onChange(fieldName, e.target.value)}
       />
@@ -42,7 +51,8 @@ function Field({ label, fieldName, value, onChange, type = 'text', placeholder =
 }
 
 function Thumb({ src, alt }) {
-  if (!src) return <div className="admin-thumb admin-thumb--placeholder" aria-hidden />;
+  if (!src)
+    return <div className="admin-thumb admin-thumb--placeholder" aria-hidden />;
   return <img className="admin-thumb" src={src} alt={alt} />;
 }
 
@@ -59,10 +69,18 @@ function VinylRow({ vinyl, onEdit, onDelete }) {
         <span className="admin-list__country">{vinyl.country}</span>
       </div>
       <div className="admin-list__actions">
-        <button type="button" className="admin-btn admin-btn--secondary admin-btn--sm" onClick={() => onEdit(vinyl)}>
+        <button
+          type="button"
+          className="admin-btn admin-btn--secondary admin-btn--sm"
+          onClick={() => onEdit(vinyl)}
+        >
           Editar
         </button>
-        <button type="button" className="admin-btn admin-btn--danger admin-btn--sm" onClick={() => onDelete(vinyl.id)}>
+        <button
+          type="button"
+          className="admin-btn admin-btn--danger admin-btn--sm"
+          onClick={() => onDelete(vinyl.id)}
+        >
           Eliminar
         </button>
       </div>
@@ -73,13 +91,15 @@ function VinylRow({ vinyl, onEdit, onDelete }) {
 function FavoriteTracksEditor({ tracks, onChange }) {
   function updateTrack(index, field, value) {
     const next = tracks.map((t, i) =>
-      i === index ? { ...t, [field]: field === 'position' ? Number(value) : value } : t
+      i === index
+        ? { ...t, [field]: field === "position" ? Number(value) : value }
+        : t,
     );
     onChange(next);
   }
 
   function addTrack() {
-    onChange([...tracks, { position: tracks.length + 1, title: '' }]);
+    onChange([...tracks, { position: tracks.length + 1, title: "" }]);
   }
 
   function removeTrack(index) {
@@ -90,11 +110,17 @@ function FavoriteTracksEditor({ tracks, onChange }) {
     <div className="admin-tracks">
       <div className="admin-tracks__header">
         <span className="admin-form__label">Canciones favoritas</span>
-        <button type="button" className="admin-btn admin-btn--secondary admin-btn--sm" onClick={addTrack}>
+        <button
+          type="button"
+          className="admin-btn admin-btn--secondary admin-btn--sm"
+          onClick={addTrack}
+        >
           + Añadir canción
         </button>
       </div>
-      {tracks.length === 0 && <p className="admin-tracks__empty">Sin canciones favoritas aún.</p>}
+      {tracks.length === 0 && (
+        <p className="admin-tracks__empty">Sin canciones favoritas aún.</p>
+      )}
       {tracks.map((track, i) => (
         <div key={i} className="admin-tracks__row">
           <input
@@ -103,7 +129,7 @@ function FavoriteTracksEditor({ tracks, onChange }) {
             min="1"
             placeholder="#"
             value={track.position}
-            onChange={(e) => updateTrack(i, 'position', e.target.value)}
+            onChange={(e) => updateTrack(i, "position", e.target.value)}
             aria-label={`Posición canción ${i + 1}`}
           />
           <input
@@ -111,7 +137,7 @@ function FavoriteTracksEditor({ tracks, onChange }) {
             type="text"
             placeholder="Título de la canción"
             value={track.title}
-            onChange={(e) => updateTrack(i, 'title', e.target.value)}
+            onChange={(e) => updateTrack(i, "title", e.target.value)}
             aria-label={`Título canción ${i + 1}`}
           />
           <button
@@ -129,17 +155,20 @@ function FavoriteTracksEditor({ tracks, onChange }) {
 }
 
 function TagsEditor({ tags, onChange }) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   function commit() {
-    const next = input.split(',').map((t) => t.trim()).filter(Boolean);
+    const next = input
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
     if (next.length === 0) return;
     onChange([...tags, ...next]);
-    setInput('');
+    setInput("");
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
       commit();
     }
@@ -188,10 +217,10 @@ function VinylForm({ initial, onSave, onCancel }) {
     tags: initial?.tags ?? [],
     inCollection: initial?.inCollection ?? false,
     favoriteTracks: initial?.favoriteTracks ?? [],
-    coverImage: initial?.coverImage ?? '',
-    spotify: initial?.spotify ?? '',
-    tidal: initial?.tidal ?? '',
-    youtube: initial?.youtube ?? '',
+    coverImage: initial?.coverImage ?? "",
+    spotify: initial?.spotify ?? "",
+    tidal: initial?.tidal ?? "",
+    youtube: initial?.youtube ?? "",
   }));
 
   const isNew = !initial?.id;
@@ -215,28 +244,64 @@ function VinylForm({ initial, onSave, onCancel }) {
   return (
     <form className="admin-form" onSubmit={handleSubmit} noValidate>
       <h2 className="admin-form__title">
-        {isNew ? 'Nuevo vinilo' : `Editar: ${form.album || '…'}`}
+        {isNew ? "Nuevo vinilo" : `Editar: ${form.album || "…"}`}
       </h2>
 
       <fieldset className="admin-form__fieldset">
         <legend className="admin-form__legend">Información del álbum</legend>
         <div className="admin-form__grid">
-          <Field label="Álbum" fieldName="album" value={form.album} onChange={set} placeholder="Nombre del álbum" />
-          <Field label="Artista" fieldName="artist" value={form.artist} onChange={set} placeholder="Nombre del artista" />
-          <Field label="Sello" fieldName="label" value={form.label} onChange={set} placeholder="Warner Bros." />
-          <Field label="Género" fieldName="genre" value={form.genre} onChange={set} placeholder="Rock, Jazz, Pop…" />
-          <Field label="País" fieldName="country" value={form.country} onChange={set} placeholder="USA, UK…" />
-          <Field label="Fecha de lanzamiento" fieldName="purchaseDate" value={form.purchaseDate} onChange={set} placeholder="15/03/2024" />
+          <Field
+            label="Álbum"
+            fieldName="album"
+            value={form.album}
+            onChange={set}
+            placeholder="Nombre del álbum"
+          />
+          <Field
+            label="Artista"
+            fieldName="artist"
+            value={form.artist}
+            onChange={set}
+            placeholder="Nombre del artista"
+          />
+          <Field
+            label="Sello"
+            fieldName="label"
+            value={form.label}
+            onChange={set}
+            placeholder="Warner Bros."
+          />
+          <Field
+            label="Género"
+            fieldName="genre"
+            value={form.genre}
+            onChange={set}
+            placeholder="Rock, Jazz, Pop…"
+          />
+          <Field
+            label="País"
+            fieldName="country"
+            value={form.country}
+            onChange={set}
+            placeholder="USA, UK…"
+          />
+          <Field
+            label="Fecha de lanzamiento"
+            fieldName="purchaseDate"
+            value={form.purchaseDate}
+            onChange={set}
+            placeholder="15/03/2024"
+          />
         </div>
         <div className="admin-form__field">
           <label className="admin-form__label">Descriptivos</label>
-          <TagsEditor tags={form.tags} onChange={(tags) => set('tags', tags)} />
+          <TagsEditor tags={form.tags} onChange={(tags) => set("tags", tags)} />
         </div>
         <label className="admin-collection-check">
           <input
             type="checkbox"
             checked={form.inCollection}
-            onChange={(e) => set('inCollection', e.target.checked)}
+            onChange={(e) => set("inCollection", e.target.checked)}
           />
           <span>Añadido a mi colección definitiva</span>
         </label>
@@ -245,10 +310,34 @@ function VinylForm({ initial, onSave, onCancel }) {
       <fieldset className="admin-form__fieldset">
         <legend className="admin-form__legend">Portada y streaming</legend>
         <div className="admin-form__grid">
-          <Field label="URL portada" fieldName="coverImage" value={form.coverImage} onChange={set} placeholder="https://…" />
-          <Field label="Spotify" fieldName="spotify" value={form.spotify} onChange={set} placeholder="https://open.spotify.com/…" />
-          <Field label="Tidal" fieldName="tidal" value={form.tidal} onChange={set} placeholder="https://listen.tidal.com/…" />
-          <Field label="YouTube" fieldName="youtube" value={form.youtube} onChange={set} placeholder="https://www.youtube.com/…" />
+          <Field
+            label="URL portada"
+            fieldName="coverImage"
+            value={form.coverImage}
+            onChange={set}
+            placeholder="https://…"
+          />
+          <Field
+            label="Spotify"
+            fieldName="spotify"
+            value={form.spotify}
+            onChange={set}
+            placeholder="https://open.spotify.com/…"
+          />
+          <Field
+            label="Tidal"
+            fieldName="tidal"
+            value={form.tidal}
+            onChange={set}
+            placeholder="https://listen.tidal.com/…"
+          />
+          <Field
+            label="YouTube"
+            fieldName="youtube"
+            value={form.youtube}
+            onChange={set}
+            placeholder="https://www.youtube.com/…"
+          />
         </div>
         {form.coverImage && (
           <div className="admin-form__preview">
@@ -256,7 +345,9 @@ function VinylForm({ initial, onSave, onCancel }) {
               src={form.coverImage}
               alt="Vista previa de portada"
               className="admin-form__preview-img"
-              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
             />
           </div>
         )}
@@ -266,15 +357,19 @@ function VinylForm({ initial, onSave, onCancel }) {
         <legend className="admin-form__legend">Canciones favoritas</legend>
         <FavoriteTracksEditor
           tracks={form.favoriteTracks}
-          onChange={(tracks) => set('favoriteTracks', tracks)}
+          onChange={(tracks) => set("favoriteTracks", tracks)}
         />
       </fieldset>
 
       <div className="admin-form__actions">
         <button type="submit" className="admin-btn admin-btn--primary">
-          {isNew ? 'Crear vinilo' : 'Guardar cambios'}
+          {isNew ? "Crear vinilo" : "Guardar cambios"}
         </button>
-        <button type="button" className="admin-btn admin-btn--secondary" onClick={onCancel}>
+        <button
+          type="button"
+          className="admin-btn admin-btn--secondary"
+          onClick={onCancel}
+        >
           Cancelar
         </button>
       </div>
@@ -283,37 +378,76 @@ function VinylForm({ initial, onSave, onCancel }) {
 }
 
 export default function Admin() {
-  const [vinyls, setVinyls] = useState(loadVinyls);
+  const [vinyls, setVinyls] = useState(() => {
+    try {
+      const loaded = loadVinyls();
+      if (!Array.isArray(loaded)) {
+        console.error("Admin: loadVinyls returned non-array:", loaded);
+        return [];
+      }
+      return loaded;
+    } catch (e) {
+      console.error("Admin: Error loading vinyls on init:", e);
+      return [];
+    }
+  });
   const [editing, setEditing] = useState(null);
   const [isNew, setIsNew] = useState(false);
-  const [notification, setNotification] = useState('');
+  const [notification, setNotification] = useState("");
+  const [loadError, setLoadError] = useState(null);
+
+  useEffect(() => {
+    // Log initialization for debugging
+    console.log("Admin component mounted. Vinyls loaded:", vinyls.length);
+  }, []);
 
   function notify(msg) {
+    console.log("Notification:", msg);
     setNotification(msg);
-    setTimeout(() => setNotification(''), 2500);
+    setTimeout(() => setNotification(""), 2500);
   }
 
-  const handleSave = useCallback((vinyl) => {
-    setVinyls((prev) => {
-      const next = isNew
-        ? [...prev, vinyl]
-        : prev.map((v) => (v.id === vinyl.id ? vinyl : v));
-      saveVinyls(next);
-      return next;
-    });
-    setEditing(null);
-    setIsNew(false);
-    notify(isNew ? 'Vinilo creado.' : 'Cambios guardados.');
-  }, [isNew]);
+  const handleSave = useCallback(
+    (vinyl) => {
+      setVinyls((prev) => {
+        const next = isNew
+          ? [...prev, vinyl]
+          : prev.map((v) => (v.id === vinyl.id ? vinyl : v));
+        const saved = saveVinyls(next);
+        if (!saved) {
+          setLoadError("Error al guardar los cambios. Intenta de nuevo.");
+          console.error("handleSave: saveVinyls returned false");
+        } else {
+          setLoadError(null);
+        }
+        return next;
+      });
+      setEditing(null);
+      setIsNew(false);
+      notify(isNew ? "Vinilo creado." : "Cambios guardados.");
+    },
+    [isNew],
+  );
 
   const handleDelete = useCallback((id) => {
-    if (!window.confirm('¿Eliminar este vinilo? Esta acción no se puede deshacer.')) return;
+    if (
+      !window.confirm(
+        "¿Eliminar este vinilo? Esta acción no se puede deshacer.",
+      )
+    )
+      return;
     setVinyls((prev) => {
       const next = prev.filter((v) => v.id !== id);
-      saveVinyls(next);
+      const saved = saveVinyls(next);
+      if (!saved) {
+        setLoadError("Error al eliminar. Intenta de nuevo.");
+        console.error("handleDelete: saveVinyls returned false");
+      } else {
+        setLoadError(null);
+      }
       return next;
     });
-    notify('Vinilo eliminado.');
+    notify("Vinilo eliminado.");
   }, []);
 
   const showForm = isNew || editing !== null;
@@ -326,12 +460,32 @@ export default function Admin() {
           <span className="admin-header__badge">Admin</span>
         </div>
         <nav className="admin-header__nav">
-          <button type="button" className="admin-btn admin-btn--secondary admin-btn--sm" onClick={exportVinyls}>
+          <button
+            type="button"
+            className="admin-btn admin-btn--secondary admin-btn--sm"
+            onClick={exportVinyls}
+          >
             Exportar vinyls.js
           </button>
-          <a href="/" className="admin-btn admin-btn--ghost admin-btn--sm">← Volver al sitio</a>
+          <a href="/" className="admin-btn admin-btn--ghost admin-btn--sm">
+            ← Volver al sitio
+          </a>
         </nav>
       </header>
+
+      {loadError && (
+        <div
+          className="admin-notification"
+          role="alert"
+          style={{
+            background: "#fee2e2",
+            color: "#991b1b",
+            borderBottomColor: "#fecaca",
+          }}
+        >
+          {loadError}
+        </div>
+      )}
 
       {notification && (
         <div className="admin-notification" role="status" aria-live="polite">
@@ -344,27 +498,40 @@ export default function Admin() {
           <VinylForm
             initial={isNew ? undefined : editing}
             onSave={handleSave}
-            onCancel={() => { setEditing(null); setIsNew(false); }}
+            onCancel={() => {
+              setEditing(null);
+              setIsNew(false);
+            }}
           />
         ) : (
           <>
             <div className="admin-toolbar">
               <h1 className="admin-toolbar__title">
-                Vinilos <span className="admin-toolbar__count">({vinyls.length})</span>
+                Vinilos{" "}
+                <span className="admin-toolbar__count">({vinyls.length})</span>
               </h1>
-              <button type="button" className="admin-btn admin-btn--primary" onClick={() => setIsNew(true)}>
+              <button
+                type="button"
+                className="admin-btn admin-btn--primary"
+                onClick={() => setIsNew(true)}
+              >
                 + Añadir vinilo
               </button>
             </div>
             <div className="admin-list">
               {vinyls.length === 0 ? (
-                <p className="admin-list__empty">No hay vinilos. Añade el primero.</p>
+                <p className="admin-list__empty">
+                  No hay vinilos. Añade el primero.
+                </p>
               ) : (
                 vinyls.map((vinyl) => (
                   <VinylRow
                     key={vinyl.id}
                     vinyl={vinyl}
-                    onEdit={(v) => { setEditing(v); setIsNew(false); }}
+                    onEdit={(v) => {
+                      setEditing(v);
+                      setIsNew(false);
+                    }}
                     onDelete={handleDelete}
                   />
                 ))
