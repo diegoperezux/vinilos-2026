@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
+import { LASTFM_API_KEY, LASTFM_USER } from '../utils/lastfmConfig';
 
-const API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
-const USER = import.meta.env.VITE_LASTFM_USER;
 const POLL_MS = 30_000;
 
 async function fetchRecentTrack() {
-  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${USER}&api_key=${API_KEY}&format=json&limit=1`;
+  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=1`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Last.fm fetch failed');
   const data = await res.json();
