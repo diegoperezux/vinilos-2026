@@ -31,7 +31,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Creado por Diego Perez →
+              Música seleccionada por Diego Perez →
             </a>
           </div>
           <footer className="site-footer">

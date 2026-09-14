@@ -413,14 +413,14 @@
     position: static;
     height: auto;
     min-width: 0;
-    padding: 1rem 1.5rem 0.5rem;
+    padding: 0.85rem 1.25rem 0.6rem;
     border-right: none;
     border-bottom: 1px solid var(--sidebar-border);
     justify-content: flex-start;
   }
 
   .sidebar-content {
-    gap: 0.6rem;
+    gap: 0.15rem;
   }
 
   .shelf-title {
