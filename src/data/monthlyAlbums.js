@@ -110,7 +110,58 @@ export const monthlyAlbums = [
       },
     ],
   },
-  { key: "2026-03", label: "Marzo", albums: [] },
+  {
+    key: "2026-03",
+    label: "Marzo",
+    albums: [
+      {
+        album: "An Undying Love for a Burning World",
+        artist: "Neurosis",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273049113d68552cc74ab025190",
+        link: "https://open.spotify.com/album/6R9JG8pkMHdGz031ceugiM",
+        favorite: true,
+        genres: ["Sludge Metal", "Post-Metal"],
+        review:
+          "Cuatro décadas después siguen sonando como el fin del mundo: sludge metal pesadísimo y atmosférico, casi religioso en su intensidad. No hacen discos, hacen rituales.",
+      },
+      {
+        album: "Trying Times",
+        artist: "James Blake",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273884dd01508605dca727d8993",
+        link: "https://open.spotify.com/album/16tV8wTfqPyA6Cu5dwJJPc",
+        genres: ["Electronic", "Alt R&B"],
+        review:
+          "Vuelve a su terreno de siempre: electrónica mínima, voz quebrada y silencios que pesan más que los graves. Melancólico pero nunca frío.",
+      },
+      {
+        album: "Assumption",
+        artist: "Landowner",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273c1a091ea04fb94c237a92a89",
+        link: "https://open.spotify.com/album/5ekOffsWXuF9rsRJaRVZCx",
+        genres: ["Post-Punk", "Art Punk"],
+        review:
+          "Post-punk repetitivo y deadpan, con guitarras que giran en loop hasta hipnotizar. Suena a instrucciones leídas en voz baja.",
+      },
+      {
+        album: "Circadia",
+        artist: "Mammal Hands",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273bb1ff958c01affeca4cf5000",
+        link: "https://open.spotify.com/album/2b62tiWt3Ot0AlSodBxgh7",
+        genres: ["Jazz", "Minimalism"],
+        review:
+          "Jazz minimalista construido a puro trío: piano, saxo y batería tejiendo patrones que respiran juntos. Meditativo sin ser aburrido.",
+      },
+      {
+        album: "a short history of decay",
+        artist: "Nothing",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27319848dd29dea227271dcd16b",
+        link: "https://open.spotify.com/album/7euwYFDlezb1aLOvEE4p2P",
+        genres: ["Shoegaze"],
+        review:
+          "Shoegaze denso y hermoso de una banda que viene del hardcore, así que aunque suene a nube también pega duro. Ruido bonito.",
+      },
+    ],
+  },
   { key: "2026-04", label: "Abril", albums: [] },
   { key: "2026-05", label: "Mayo", albums: [] },
   { key: "2026-06", label: "Junio", albums: [] },
