@@ -187,10 +187,77 @@ export const monthlyAlbums = [
       },
     ],
   },
-  { key: "2026-05", label: "Mayo", albums: [] },
-  { key: "2026-06", label: "Junio", albums: [] },
-  { key: "2026-07", label: "Julio", albums: [] },
-  { key: "2026-08", label: "Agosto", albums: [] },
+  {
+    key: "2026-05",
+    label: "Mayo",
+    albums: [
+      {
+        album: "Inferno",
+        artist: "Boards of Canada",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273c0588d9dcd8bd9e7a7845844",
+        link: "https://open.spotify.com/album/0mu3EvWYfNwBfISSg0q03p",
+        favorite: true,
+        genres: ["IDM", "Ambient"],
+        review:
+          "Vuelven con su electrónica brumosa de siempre: sintetizadores tibios, cinta degradada y esa nostalgia que no sabes de dónde viene. Nadie más suena así.",
+      },
+    ],
+  },
+  {
+    key: "2026-06",
+    label: "Junio",
+    albums: [
+      {
+        album: "Hum of Hurt",
+        artist: "Converge",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2734996580bad8a0f3b77c2da9e",
+        link: "https://open.spotify.com/album/26mI8fRaaNWASMbfS98L43",
+        genres: ["Metalcore", "Mathcore"],
+        review:
+          "Siguen siendo la vara con la que se mide todo lo demás: mathcore brutal y técnico, con Bannon gritando como si le fuera la vida. Incómodo a propósito.",
+      },
+    ],
+  },
+  {
+    key: "2026-07",
+    label: "Julio",
+    albums: [
+      {
+        album: "A Stranger To You",
+        artist: "Loathe",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2732244c635d7f41716d16150df",
+        link: "https://open.spotify.com/album/6cIaFWlRULnxMrYsiRnBXv",
+        genres: ["Metalcore", "Shoegaze"],
+        review:
+          "Su truco de siempre: pasar de lo brutal a lo etéreo sin avisar, metalcore pesadísimo que de repente se vuelve nube de shoegaze. Nadie hace ese contraste igual.",
+      },
+    ],
+  },
+  {
+    key: "2026-08",
+    label: "Agosto",
+    albums: [
+      {
+        album: "This Mirror Weighs a Ton",
+        artist: "Interpol",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273a9d4720ac4088a6c58960235",
+        link: "https://open.spotify.com/album/2LgXUDNp1uPV0t55aTlfUT",
+        favorite: true,
+        genres: ["Post-Punk", "Indie Rock"],
+        review:
+          "Siguen fieles a su fórmula de siempre: post-punk elegante, bajo al frente y la voz grave de Banks flotando encima. Dos décadas después todavía suenan a ellos mismos.",
+      },
+      {
+        album: "It Goes On",
+        artist: "Westside Cowboy",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27359b4c22ba76349483371d480",
+        link: "https://open.spotify.com/album/3dWKCKeiWtxjDNPTbGCQTO",
+        genres: ["Indie Rock", "Alt-Country"],
+        review:
+          "Debut de una banda de Manchester que mezcla rock británico con folk americano, le dicen \"britainicana\". Fresco y directo, con dos guitarras y voces compartidas.",
+      },
+    ],
+  },
   { key: "2026-09", label: "Septiembre", albums: [] },
   { key: "2026-10", label: "Octubre", albums: [] },
   { key: "2026-11", label: "Noviembre", albums: [] },

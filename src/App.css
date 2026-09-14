@@ -216,6 +216,16 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.month-tab:disabled {
+  color: var(--panel-text-muted);
+  opacity: 0.35;
+  cursor: default;
+}
+
+.month-tab:disabled:hover {
+  color: var(--panel-text-muted);
+}
+
 .shelf-empty-state {
   position: relative;
   flex: 1;

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { currentMonthKey } from '../utils/currentMonthKey';
 
 // Puts the favorite album at the true middle of the row (same number of
 // covers fanned out on each side), regardless of where it sits in the data.
@@ -58,6 +59,7 @@ function CoverFlowItem({ item, offset, isActive, onSelect }) {
 
 function MonthTabs({ months, selectedKey, onSelect }) {
   const activeRef = useRef(null);
+  const nowKey = currentMonthKey();
 
   useEffect(() => {
     activeRef.current?.scrollIntoView({
@@ -71,6 +73,10 @@ function MonthTabs({ months, selectedKey, onSelect }) {
     <nav className="month-tabs" aria-label="Meses del año">
       {months.map((month) => {
         const isActive = month.key === selectedKey;
+        // The current month and any future ones haven't happened yet, so
+        // there's nothing to pick favorites from — keep them visible but
+        // unclickable instead of hiding them.
+        const isDisabled = month.key >= nowKey;
         return (
           <button
             key={month.key}
@@ -78,6 +84,7 @@ function MonthTabs({ months, selectedKey, onSelect }) {
             type="button"
             className={`month-tab${isActive ? ' month-tab--active' : ''}`}
             onClick={() => onSelect(month.key)}
+            disabled={isDisabled}
           >
             {month.label}
           </button>

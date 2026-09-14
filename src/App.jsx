@@ -1,20 +1,28 @@
 import { useState } from "react";
 import { monthlyAlbums } from "./data/monthlyAlbums";
+import { currentMonthKey } from "./utils/currentMonthKey";
 import CoverFlow from "./components/CoverFlow";
 import NowPlaying from "./components/NowPlaying";
 import "./App.css";
 
-function currentMonthKey() {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  return `${now.getFullYear()}-${month}`;
+// The current month is always empty (you can't pick favorites for a month
+// that isn't over yet), so land on the most recent past month that has
+// albums instead of on today's empty one.
+function defaultMonthKey(months) {
+  const nowKey = currentMonthKey();
+  const pastWithAlbums = months.filter(
+    (m) => m.key < nowKey && m.albums.length > 0,
+  );
+  if (pastWithAlbums.length > 0) {
+    return pastWithAlbums[pastWithAlbums.length - 1].key;
+  }
+  return months[0].key;
 }
 
 function App() {
-  const defaultMonthKey = monthlyAlbums.some((m) => m.key === currentMonthKey())
-    ? currentMonthKey()
-    : monthlyAlbums[0].key;
-  const [selectedMonthKey, setSelectedMonthKey] = useState(defaultMonthKey);
+  const [selectedMonthKey, setSelectedMonthKey] = useState(() =>
+    defaultMonthKey(monthlyAlbums),
+  );
 
   return (
     <div className="app">
