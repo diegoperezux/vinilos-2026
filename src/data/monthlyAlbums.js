@@ -162,7 +162,31 @@ export const monthlyAlbums = [
       },
     ],
   },
-  { key: "2026-04", label: "Abril", albums: [] },
+  {
+    key: "2026-04",
+    label: "Abril",
+    albums: [
+      {
+        album: "Directions",
+        artist: "Knumears",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2737e121559fd55892273ba9c66",
+        link: "https://open.spotify.com/album/3TFtQB92uZdJiYubiOb7ps",
+        favorite: true,
+        genres: ["Screamo", "Post-Hardcore"],
+        review:
+          "Debut crudo de skramz que habla de familia y cambio, grabado con el productor de Sunbather. Emocional sin caer en lo cursi, puro SoCal screamo.",
+      },
+      {
+        album: "Vol.II",
+        artist: "Angine de Poitrine",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2734821b77fd92093513d7634b5",
+        link: "https://open.spotify.com/album/3FqqIeynZXFBcyLS9FlWMo",
+        genres: ["Prog Rock", "Math Rock"],
+        review:
+          "Prog y math rock técnico —afinaciones raras, compases imposibles— pero que igual se puede bailar. Complicado sin sentirse forzado.",
+      },
+    ],
+  },
   { key: "2026-05", label: "Mayo", albums: [] },
   { key: "2026-06", label: "Junio", albums: [] },
   { key: "2026-07", label: "Julio", albums: [] },
