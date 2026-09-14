@@ -72,40 +72,6 @@
   transition: color 0.3s;
 }
 
-.month-index {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  margin-top: 0.5rem;
-}
-
-.month-index-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--color-muted);
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  transition: background 0.15s, color 0.15s;
-}
-
-.month-index-item:hover {
-  background: var(--sidebar-hover-bg);
-  color: var(--color-text);
-}
-
-.month-index-item--active {
-  color: var(--color-title);
-  font-weight: 700;
-}
-
 /* ─── Now Playing ─────────────────────────────────────────── */
 .now-playing {
   display: flex;
@@ -236,23 +202,49 @@
 }
 
 /* ─── Shelf page ─────────────────────────────────────────── */
-.month-header {
+.month-tabs {
   position: relative;
   align-self: flex-start;
   width: 100%;
-  text-align: left;
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   padding: 0.5rem 1rem 1rem;
+  mask-image: linear-gradient(to right, transparent, black 3%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 94%, transparent);
 }
 
-.month-header-title {
-  font-size: 1.5rem;
+.month-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.month-tab {
+  flex: none;
+  font-size: 1.05rem;
   font-weight: 700;
+  white-space: nowrap;
+  color: var(--panel-text-muted);
+  background: none;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.month-tab:hover {
   color: var(--panel-text);
-  letter-spacing: -0.02em;
-  margin: 0;
+}
+
+.month-tab--active {
+  color: var(--panel-text);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .shelf-empty-state {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
@@ -461,40 +453,28 @@
 @media (max-width: 640px) {
   .layout {
     grid-template-columns: 1fr;
+    /* Desktop stacks sidebar + content as one 100vh row; mobile stacks
+       them as two separate rows, so that min-height would get split
+       between both and stretch the sidebar with empty space. */
+    min-height: 0;
   }
 
   .sidebar {
     position: static;
     height: auto;
     min-width: 0;
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 0.5rem;
     border-right: none;
     border-bottom: 1px solid var(--sidebar-border);
     justify-content: flex-start;
   }
 
+  .sidebar-content {
+    gap: 0.6rem;
+  }
+
   .shelf-title {
     font-size: 1.5rem;
-  }
-
-  .month-index {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 0.15rem;
-    mask-image: linear-gradient(to right, black 92%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 92%, transparent 100%);
-  }
-
-  .month-index::-webkit-scrollbar {
-    display: none;
-  }
-
-  .month-index-item {
-    flex: none;
-    white-space: nowrap;
   }
 
   .site-footer {
@@ -510,8 +490,12 @@
     border-top: 1px solid var(--sidebar-border);
   }
 
-  .month-header {
-    padding: 0 0 0.75rem;
+  .month-tabs {
+    padding: 0.75rem 1rem;
+  }
+
+  .month-tab {
+    font-size: 0.95rem;
   }
 
   .coverflow {

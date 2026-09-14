@@ -64,7 +64,42 @@ function CoverFlowItem({ item, offset, isActive, onSelect }) {
   );
 }
 
-function CoverFlow({ albums, monthLabel }) {
+function MonthTabs({ months, selectedKey, onSelect }) {
+  const activeRef = useRef(null);
+
+  useEffect(() => {
+    activeRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }, [selectedKey]);
+
+  return (
+    <nav className="month-tabs" aria-label="Meses del año">
+      {months.map((month) => {
+        const isActive = month.key === selectedKey;
+        return (
+          <button
+            key={month.key}
+            ref={isActive ? activeRef : null}
+            type="button"
+            className={`month-tab${isActive ? ' month-tab--active' : ''}`}
+            onClick={() => onSelect(month.key)}
+          >
+            {month.label}
+          </button>
+        );
+      })}
+    </nav>
+  );
+}
+
+function CoverFlow({ monthlyAlbums, selectedMonthKey, onSelectMonth }) {
+  const selectedMonth =
+    monthlyAlbums.find((m) => m.key === selectedMonthKey) ?? monthlyAlbums[0];
+  const albums = selectedMonth.albums;
+
   const orderedAlbums = useMemo(() => withFavoriteCentered(albums), [albums]);
   const favoriteIndex = orderedAlbums.findIndex((a) => a.favorite);
   const [activeIndex, setActiveIndex] = useState(
@@ -86,7 +121,7 @@ function CoverFlow({ albums, monthLabel }) {
 
   useEffect(() => {
     const el = stageRef.current;
-    if (!el) return;
+    if (!el || orderedAlbums.length === 0) return;
     function handleKey(e) {
       if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
@@ -109,75 +144,85 @@ function CoverFlow({ albums, monthLabel }) {
 
   return (
     <div className="coverflow">
-      <div
-        className="coverflow-ambient"
-        style={{ backgroundImage: `url(${active.coverImage})` }}
-        aria-hidden
+      {active && (
+        <div
+          className="coverflow-ambient"
+          style={{ backgroundImage: `url(${active.coverImage})` }}
+          aria-hidden
+        />
+      )}
+
+      <MonthTabs
+        months={monthlyAlbums}
+        selectedKey={selectedMonth.key}
+        onSelect={onSelectMonth}
       />
 
-      <div className="month-header">
-        <h2 className="month-header-title">{monthLabel} 2026</h2>
-      </div>
-
-      <div className="coverflow-body">
-        <div
-          className="coverflow-stage"
-          ref={stageRef}
-          tabIndex={0}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          {orderedAlbums.map((item, i) => (
-            <CoverFlowItem
-              key={item.album + item.artist}
-              item={item}
-              offset={i - activeIndex}
-              isActive={i === activeIndex}
-              onSelect={() => goTo(i)}
-            />
-          ))}
+      {!active ? (
+        <div className="shelf-empty-state">
+          <p>Todavía no hay discos guardados para {selectedMonth.label}.</p>
         </div>
-
-        <div className="coverflow-caption">
-          <p className="coverflow-caption-album">{active.album}</p>
-          <p className="coverflow-caption-artist">{active.artist}</p>
-          {active.genres?.length > 0 && (
-            <div className="coverflow-genres">
-              {active.genres.map((genre) => (
-                <span key={genre} className="coverflow-genre-tag">
-                  {genre}
-                </span>
-              ))}
-            </div>
-          )}
-          {active.review && <p className="coverflow-review">{active.review}</p>}
-        </div>
-
-        {active.link && (
-          <a
-            href={active.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="coverflow-listen-link"
+      ) : (
+        <div className="coverflow-body">
+          <div
+            className="coverflow-stage"
+            ref={stageRef}
+            tabIndex={0}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M3 18v-6a9 9 0 0 1 18 0v6"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
+            {orderedAlbums.map((item, i) => (
+              <CoverFlowItem
+                key={item.album + item.artist}
+                item={item}
+                offset={i - activeIndex}
+                isActive={i === activeIndex}
+                onSelect={() => goTo(i)}
               />
-              <path
-                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinejoin="round"
-              />
-            </svg>
-            Escuchar
-          </a>
-        )}
-      </div>
+            ))}
+          </div>
+
+          <div className="coverflow-caption">
+            <p className="coverflow-caption-album">{active.album}</p>
+            <p className="coverflow-caption-artist">{active.artist}</p>
+            {active.genres?.length > 0 && (
+              <div className="coverflow-genres">
+                {active.genres.map((genre) => (
+                  <span key={genre} className="coverflow-genre-tag">
+                    {genre}
+                  </span>
+                ))}
+              </div>
+            )}
+            {active.review && <p className="coverflow-review">{active.review}</p>}
+          </div>
+
+          {active.link && (
+            <a
+              href={active.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="coverflow-listen-link"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M3 18v-6a9 9 0 0 1 18 0v6"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Escuchar
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
