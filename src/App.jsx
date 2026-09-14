@@ -25,15 +25,17 @@ function App() {
             <p className="sidebar-about">
               Mis discos favoritos, mes a mes, durante este 2026.
             </p>
+            <a
+              href="https://diegoperezux.vercel.app/"
+              className="sidebar-credit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Creado por Diego Perez →
+            </a>
           </div>
           <footer className="site-footer">
             <NowPlaying />
-            <div className="site-footer-bottom">
-              <div className="site-footer-info">
-                <span className="site-footer-name">Diego Perez</span>
-                <p className="site-footer-madein">Made in 2026</p>
-              </div>
-            </div>
           </footer>
         </aside>
 
@@ -48,12 +50,6 @@ function App() {
 
       <footer className="mobile-footer" style={{ display: "none" }}>
         <NowPlaying />
-        <div className="site-footer-bottom">
-          <div className="site-footer-info">
-            <span className="site-footer-name">Diego Perez</span>
-            <p className="site-footer-madein">Made in 2026</p>
-          </div>
-        </div>
       </footer>
     </div>
   );

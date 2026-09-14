@@ -12,17 +12,9 @@ function withFavoriteCentered(albums) {
 
 function FavoriteStamp() {
   return (
-    <div className="coverflow-stamp" aria-hidden>
-      <svg viewBox="0 0 24 24" fill="none">
-        <path
-          d="M12 3.5l2.47 5.13 5.53.83-4 4.06.94 5.68L12 16.6l-4.94 2.6.94-5.68-4-4.06 5.53-.83L12 3.5z"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span>Favorito del mes</span>
-    </div>
+    <svg className="coverflow-stamp" viewBox="0 0 24 24" role="img" aria-label="Favorito del mes">
+      <polygon points="12,2 13.15,9.28 19.07,4.93 14.77,10.85 22,12 14.77,13.15 19.07,19.07 13.15,14.77 12,22 10.85,14.77 4.93,19.07 9.23,13.15 2,12 9.23,10.85 4.93,4.93 10.85,9.23" />
+    </svg>
   );
 }
 

@@ -4,7 +4,6 @@
   --color-title: #f0e6d0;
   --color-text: #9a9285;
   --color-muted: #9f9485;
-  --color-footer-name: #f0e6d0;
   --color-footer-link: #5a5248;
   --color-footer-hover: #f0e6d0;
   --sidebar-hover-bg: rgba(255, 255, 255, 0.06);
@@ -70,6 +69,17 @@
   line-height: 1.6;
   margin: 0;
   transition: color 0.3s;
+}
+
+.sidebar-credit {
+  font-size: 0.8rem;
+  color: var(--color-footer-link);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.sidebar-credit:hover {
+  color: var(--color-footer-hover);
 }
 
 /* ─── Now Playing ─────────────────────────────────────────── */
@@ -153,43 +163,6 @@
   flex-direction: column;
   gap: 2rem;
 }
-
-.site-footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.site-footer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.site-footer-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-footer-name);
-  transition: color 0.3s;
-}
-
-.site-footer-madein {
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  transition: color 0.3s;
-}
-
-.site-footer-portfolio {
-  font-size: 0.8rem;
-  color: var(--color-footer-link);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.site-footer-portfolio:hover {
-  color: var(--color-footer-hover);
-}
-
 
 /* ─── Shelf wrapper ───────────────────────────────────────── */
 .shelf-wrapper {
@@ -346,41 +319,18 @@
 
 .coverflow-stamp {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 10px;
+  right: 10px;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--panel-accent);
-  color: #2a1e0e;
-  transform: rotate(9deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-}
-
-.coverflow-stamp svg {
-  width: 20px;
-  height: 20px;
-}
-
-.coverflow-stamp span {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+  width: 34px;
+  height: 34px;
+  fill: #ffd23f;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 .coverflow-caption {
   position: relative;
   text-align: center;
-  /* Fixed height (not min-height) so a 2-line vs. 3-line review never
-     resizes the flex layout above it — the covers stay put either way. */
-  height: 10.5rem;
-  overflow: hidden;
 }
 
 .coverflow-caption-album {
@@ -506,9 +456,5 @@
     --cf-cover-size: 190px;
     --cf-spacing: 105px;
     --cf-depth: 130px;
-  }
-
-  .coverflow-caption {
-    height: 12.5rem;
   }
 }
