@@ -39,7 +39,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Música seleccionada por Diego Perez →
+              Música seleccionada por Diego →
             </a>
           </div>
           <footer className="site-footer">
