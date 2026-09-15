@@ -228,6 +228,42 @@ export const monthlyAlbums = [
         review:
           "Vuelven con su electrónica brumosa de siempre: sintetizadores tibios, cinta degradada y esa nostalgia que no sabes de dónde viene. Nadie más suena así.",
       },
+      {
+        album: "Ascent Effort",
+        artist: "Rhododendron",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27392236cc083aa53db13c061f1",
+        link: "https://open.spotify.com/album/3pfl4baJqNTvyuvJcCC5R3",
+        genres: ["Math Rock", "Noise Rock"],
+        review:
+          "Trío de Portland que mezcla math rock técnico con noise rock crudo, puro riff que se rompe y se rearma antes de asentarse. Tensión constante, sin ganas de resolver nada.",
+      },
+      {
+        album: "Blurred Away",
+        artist: "Oakwood",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273666b9185ed532001b23185bc",
+        link: "https://open.spotify.com/album/70hdn5Yv2a0p3pGyoNBQWc",
+        genres: ["Midwest Emo", "Screamo"],
+        review:
+          "Vuelven después de una década con Blurred Away, emo del medio oeste con toques de screamo. Grabado con Phil Odom y masterizado por Will Yip, suena nostálgico sin caer en la cursilería.",
+      },
+      {
+        album: "Philadelphia's Been Good to Me",
+        artist: "Kurt Vile",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2736fc26b002a2cf7d25f90cd72",
+        link: "https://open.spotify.com/album/5AfELtBFbN1hM75hgqc7FI",
+        genres: ["Indie Rock", "Americana"],
+        review:
+          "Su décimo disco, grabado en su estudio casero de Filadelfia y el primero después de la muerte de su compañero de banda Rob Laakso. Sigue con su rock relajado entre folk y fuzz, pero aquí suena más a homenaje que a rutina.",
+      },
+      {
+        album: "Green Lands",
+        artist: "Fall Of Messiah",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273822cfac68b8250e610387d49",
+        link: "https://open.spotify.com/album/2RgjB7Gop0Q3l1sBso3s8C",
+        genres: ["Screamo", "Post-Rock"],
+        review:
+          "Quinto disco de esta banda de Lille que cierra su segunda trilogía, screamo francés con pasajes de post-rock inspirados en caminatas por el bosque. Canciones tristes sobre el campo, como ellos mismos las describen.",
+      },
     ],
   },
   {
@@ -243,6 +279,43 @@ export const monthlyAlbums = [
         review:
           "Siguen siendo la vara con la que se mide todo lo demás: mathcore brutal y técnico, con Bannon gritando como si le fuera la vida. Incómodo a propósito.",
       },
+      {
+        album: "Thread",
+        artist: "Ostraca",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27351f0a33f1d6363c4cc3569f9",
+        link: "https://open.spotify.com/album/78Ymq0pnIrAt7O1ueJFLA9",
+        genres: ["Screamo", "Post-Metal"],
+        review:
+          "Trío de Richmond que hace emoviolence pesado, entre screamo crudo y post-metal aplastante. Seis canciones cortas que no dan tregua.",
+      },
+      {
+        album: "I Built You A Tower",
+        artist: "Death Cab for Cutie",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2731356b24d48cbabc44384e753",
+        link: "https://open.spotify.com/album/4D1zUsXw30DbfOqY1gVsfT",
+        genres: ["Indie Rock", "Indie Folk"],
+        review:
+          "Su primer disco en sello independiente en más de veinte años, con un sonido más despojado que deja el foco en las letras de Gibbard. Va de lo más suave a arranques de guitarra distorsionada sin perder el hilo.",
+      },
+      {
+        album: "Fantasia",
+        artist: "SLIFT",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273be47b9c90a4494aabab327c4",
+        link: "https://open.spotify.com/album/1BAZfqnxagI9RNfIVr8FwQ",
+        genres: ["Space Rock", "Stoner Rock"],
+        review:
+          "Cuarto disco de este trío de Toulouse, su versión más directa hasta ahora sin bajarle al peso: space rock, stoner y kraut en ocho canciones que no se andan con vueltas. Suena a Clutch cruzándose con Pink Floyd en un mal viaje.",
+      },
+      {
+        album: "Inside Machines",
+        artist: "Otobo",
+        coverImage: "https://f4.bcbits.com/img/a3030294160_10.jpg",
+        link: "https://otobotobo.bandcamp.com/album/inside-machines",
+        favorite: true,
+        genres: ["Prog Rock", "Art Rock"],
+        review:
+          "Trío de Albany que hace rock progresivo denso y directo, sobre tecnología, poder y control. No está en Spotify, solo en Bandcamp, pero vale la pena buscarlo.",
+      },
     ],
   },
   {
@@ -257,6 +330,43 @@ export const monthlyAlbums = [
         genres: ["Metalcore", "Shoegaze"],
         review:
           "Su truco de siempre: pasar de lo brutal a lo etéreo sin avisar, metalcore pesadísimo que de repente se vuelve nube de shoegaze. Nadie hace ese contraste igual.",
+      },
+      {
+        album: "Operator",
+        artist: "Pleasure Model",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2731b755b2680a72db450009632",
+        link: "https://open.spotify.com/album/7iIx5M7TsWEn6zrOcX8Q5I",
+        favorite: true,
+        genres: ["Synthwave", "Futurepop"],
+        review:
+          "Synth frío y techno oscuro con títulos que suenan a manual corporativo distópico. Repetitivo a propósito, hecho para sonar en un cuarto de servidores.",
+      },
+      {
+        album: "Role Model Hermit",
+        artist: "mary in the junkyard",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2737642addd573054269cb9a577",
+        link: "https://open.spotify.com/album/0r5nmjIvD8FmcgWsILF1Eh",
+        genres: ["Indie Rock", "Experimental Rock"],
+        review:
+          "Debut de este trío de Londres, indie rock experimental grabado con Oli Bayston. Canciones sobre masculinidad tóxica, gasolineras y ratones que fueron mascota, unidas más por la amistad que por un concepto.",
+      },
+      {
+        album: "BODY TRANSMISSION",
+        artist: "MAQUINA.",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273507fc9713fa1add60bac783d",
+        link: "https://open.spotify.com/album/5GY7TjZunxwyo0AUEja9lm",
+        genres: ["EBM", "Industrial Punk"],
+        review:
+          "Trío portugués que mezcla techno, EBM, thrash y noise rock en canciones cortas y directas, pensadas para la pista más que para la sala de ensayo. Pesado, físico, sin pausas.",
+      },
+      {
+        album: "MY SKYSCRAPER",
+        artist: "Nirosta Steel",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273ee4d016041b30616091da153",
+        link: "https://open.spotify.com/album/0yZchhNCCIzegjc1ElL5Em",
+        genres: ["Disco", "Folk"],
+        review:
+          "Recopilado de 40 años de grabaciones inéditas de Steven Hall, colaborador de Arthur Russell. Salta entre disco, folk y electrónica sin quedarse quieto, el diario de alguien que nunca dejó de escribir canciones.",
       },
     ],
   },

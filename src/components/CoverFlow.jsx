@@ -101,22 +101,49 @@ function CoverFlow({ monthlyAlbums, selectedMonthKey, onSelectMonth }) {
 
   const orderedAlbums = useMemo(() => withFavoriteCentered(albums), [albums]);
   const favoriteIndex = orderedAlbums.findIndex((a) => a.favorite);
-  const [activeIndex, setActiveIndex] = useState(
-    favoriteIndex >= 0 ? favoriteIndex : 0,
-  );
+  const targetIndex = favoriteIndex >= 0 ? favoriteIndex : 0;
+
+  const [renderedAlbums, setRenderedAlbums] = useState(orderedAlbums);
+  const [activeIndex, setActiveIndex] = useState(targetIndex);
+  // Separate from activeIndex on purpose: activeIndex drives the covers'
+  // fan position (and gets nudged below so it has somewhere to animate
+  // from), but the caption/ambient background should jump straight to the
+  // target album — tying them to the nudged index made the text and blurred
+  // backdrop flash to the wrong album for a frame before correcting.
+  const [displayIndex, setDisplayIndex] = useState(targetIndex);
+
+  // On a month switch, nudge one step off the target first so the effect
+  // below always has somewhere to slide *from* — otherwise the leftover
+  // index from whatever month you were just on sometimes already matched
+  // this month's target, and the entrance animation silently skipped. Kept
+  // to a single step (not the far edge) so it reads as a small settle
+  // instead of a distracting sweep across the whole stage.
+  if (orderedAlbums !== renderedAlbums) {
+    setRenderedAlbums(orderedAlbums);
+    const lastIndex = orderedAlbums.length - 1;
+    const nudged = targetIndex < lastIndex ? targetIndex + 1 : targetIndex - 1;
+    setActiveIndex(Math.max(0, Math.min(lastIndex, nudged)));
+    setDisplayIndex(targetIndex);
+  }
+
   const touchStartX = useRef(null);
   const stageRef = useRef(null);
 
   useEffect(() => {
-    setActiveIndex(favoriteIndex >= 0 ? favoriteIndex : 0);
+    setActiveIndex(targetIndex);
+    setDisplayIndex(targetIndex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderedAlbums]);
 
-  const goTo = (i) => setActiveIndex(Math.max(0, Math.min(orderedAlbums.length - 1, i)));
+  const goTo = (i) => {
+    const clamped = Math.max(0, Math.min(orderedAlbums.length - 1, i));
+    setActiveIndex(clamped);
+    setDisplayIndex(clamped);
+  };
   const prev = () => goTo(activeIndex - 1);
   const next = () => goTo(activeIndex + 1);
 
-  const active = orderedAlbums[activeIndex];
+  const active = orderedAlbums[displayIndex];
 
   useEffect(() => {
     const el = stageRef.current;
