@@ -35,7 +35,7 @@ export const monthlyAlbums = [
         link: "https://open.spotify.com/album/1AhmI9HBzRpsappQBChYEN",
         genres: ["Shoegaze", "Alt Metal"],
         review:
-          "Suavizan el shoegaze pesado de sus discos anteriores hacia algo más luminoso y nostálgico. Después de tanta oscuridad, aquí buscan belleza en los momentos pequeños.",
+          "Suavizan el shoegaze pesado de sus discos anteriores hacia algo más luminoso y nostálgico. Después de tanta oscuridad, este disco se siente casi optimista.",
       },
       {
         album: "Please Delete This",
@@ -79,7 +79,7 @@ export const monthlyAlbums = [
         link: "https://open.spotify.com/album/2Y1lyMrTPKWuz8Cfpt81vg",
         genres: ["Psych Folk", "Singer-Songwriter"],
         review:
-          "Folk susurrado y fingerpicking delicado, con melodías que crecen despacio hasta sentirse casi fantasmales. Íntimo e invernal, para escuchar solo.",
+          "Folk susurrado y fingerpicking delicado, con melodías que crecen despacio y casi no hacen ruido. Disco para escuchar solo, de noche.",
       },
       {
         album: "Like A Poet, Keen To The Rustle Of Leaves",
@@ -122,7 +122,7 @@ export const monthlyAlbums = [
         favorite: true,
         genres: ["Sludge Metal", "Post-Metal"],
         review:
-          "Cuatro décadas después siguen sonando como el fin del mundo: sludge metal pesadísimo y atmosférico, casi religioso en su intensidad. No hacen discos, hacen rituales.",
+          "Cuatro décadas después siguen sonando como el fin del mundo: sludge metal pesadísimo y atmosférico, casi religioso en su intensidad. Se entiende por qué siguen siendo una referencia después de tanto tiempo.",
       },
       {
         album: "Trying Times",
@@ -171,7 +171,6 @@ export const monthlyAlbums = [
         artist: "Knumears",
         coverImage: "https://i.scdn.co/image/ab67616d0000b2737e121559fd55892273ba9c66",
         link: "https://open.spotify.com/album/3TFtQB92uZdJiYubiOb7ps",
-        favorite: true,
         genres: ["Screamo", "Post-Hardcore"],
         review:
           "Debut crudo de skramz que habla de familia y cambio, grabado con el productor de Sunbather. Emocional sin caer en lo cursi, puro SoCal screamo.",
@@ -183,7 +182,35 @@ export const monthlyAlbums = [
         link: "https://open.spotify.com/album/3FqqIeynZXFBcyLS9FlWMo",
         genres: ["Prog Rock", "Math Rock"],
         review:
-          "Prog y math rock técnico —afinaciones raras, compases imposibles— pero que igual se puede bailar. Complicado sin sentirse forzado.",
+          "Prog y math rock técnico, con afinaciones raras y compases imposibles, pero que igual se puede bailar. Complicado sin sentirse forzado.",
+      },
+      {
+        album: "My New Band Believe",
+        artist: "My New Band Believe",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273b2de727fc0b3d644cd8b7e57",
+        link: "https://open.spotify.com/album/0FypCc1StF9mNiLemcuJ3J",
+        genres: ["Folk", "Chamber Pop"],
+        review:
+          "Debut del proyecto de Cameron Picton (ex-Black Midi), casi todo acústico pero con cuartetos de cuerda apilados hasta sonar enorme. Íntimo y ambicioso a la vez, sin que se sienta forzado.",
+      },
+      {
+        album: "Pourquoi ce disque ?",
+        artist: "DOPPLeR",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27332221ac2441da1586dc074ab",
+        link: "https://open.spotify.com/album/5T6BdHelgiDphYd22tjltW",
+        genres: ["Noise Rock", "Post-Hardcore"],
+        review:
+          "Banda de Lyon que vuelve después de 15 años de silencio con noise post-hardcore tenso y anguloso, de la vieja escuela francesa de los 2000. Suena a Neurosis y Chat Pile con acento francés.",
+      },
+      {
+        album: "Layaway Plot",
+        artist: "Pretty Baby",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2735d100a462615e02339e8c9be",
+        link: "https://open.spotify.com/album/4z7YrB2DN51S91pmza2tDf",
+        favorite: true,
+        genres: ["Post-Hardcore", "Post-Rock"],
+        review:
+          "Banda de Charlotte que mezcla post-hardcore, punk y post-rock sin quedarse quieta en ninguno. Disco sobre el duelo, hecho de pedazos que no siempre encajan pero igual suman.",
       },
     ],
   },
@@ -255,6 +282,33 @@ export const monthlyAlbums = [
         genres: ["Indie Rock", "Alt-Country"],
         review:
           "Debut de una banda de Manchester que mezcla rock británico con folk americano, le dicen \"britainicana\". Fresco y directo, con dos guitarras y voces compartidas.",
+      },
+      {
+        album: "The Sweet Goodbye",
+        artist: "Opus Kink",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273082773afedbcf9a23c6974bf",
+        link: "https://open.spotify.com/album/1BX2CLG8MBglhD83tVUJvL",
+        genres: ["Post-Punk", "Jazz Punk"],
+        review:
+          "Su debut en formato largo mezcla punk con metales sucios, jazz y hasta cabaret, sin pedir permiso. Lo produjo Craig Silvey (Arcade Fire, Florence + The Machine) y se nota: caos con oficio detrás.",
+      },
+      {
+        album: "Bruxism",
+        artist: "Sour Tooth",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b27399338f50cf501c98092b9155",
+        link: "https://open.spotify.com/album/16xW9NO6ooUcQZmwlY8fAC",
+        genres: ["Post-Hardcore", "Noise Rock"],
+        review:
+          "Segundo disco de esta banda de Nashville: post-hardcore pesado y disonante, con Chat Pile como comparación obvia pero no injusta. Tiene un peso que se siente personal, no solo técnico.",
+      },
+      {
+        album: "Backflip Soundtrack",
+        artist: "Spring Breeding",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273c925cf07b46ab8bb3e10d0e9",
+        link: "https://open.spotify.com/album/1xy6AHU6ngGLnEluvtpXaH",
+        genres: ["Sasscore", "Synth Punk"],
+        review:
+          "Primer vinilo del trío tras seis cassettes autoeditados, sasscore acelerado con sintetizadores chillantes y gritos que no bajan la guardia. Rarísimo y bailable a la vez, que es justo su gracia.",
       },
     ],
   },
