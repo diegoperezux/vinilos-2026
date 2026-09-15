@@ -3,6 +3,7 @@ import { monthlyAlbums } from "./data/monthlyAlbums";
 import { currentMonthKey } from "./utils/currentMonthKey";
 import CoverFlow from "./components/CoverFlow";
 import NowPlaying from "./components/NowPlaying";
+import { GenreIndex, GenreResults } from "./components/GenreExplorer";
 import "./App.css";
 
 // The current month is always empty (you can't pick favorites for a month
@@ -23,6 +24,7 @@ function App() {
   const [selectedMonthKey, setSelectedMonthKey] = useState(() =>
     defaultMonthKey(monthlyAlbums),
   );
+  const [selectedGenreGroup, setSelectedGenreGroup] = useState(null);
 
   return (
     <div className="app">
@@ -41,6 +43,11 @@ function App() {
             >
               Música seleccionada por Diego →
             </a>
+
+            <GenreIndex
+              activeGroup={selectedGenreGroup}
+              onSelectGroup={setSelectedGenreGroup}
+            />
           </div>
           <footer className="site-footer">
             <NowPlaying />
@@ -48,11 +55,19 @@ function App() {
         </aside>
 
         <main className="shelf-wrapper">
-          <CoverFlow
-            monthlyAlbums={monthlyAlbums}
-            selectedMonthKey={selectedMonthKey}
-            onSelectMonth={setSelectedMonthKey}
-          />
+          {selectedGenreGroup ? (
+            <GenreResults
+              monthlyAlbums={monthlyAlbums}
+              group={selectedGenreGroup}
+              onClose={() => setSelectedGenreGroup(null)}
+            />
+          ) : (
+            <CoverFlow
+              monthlyAlbums={monthlyAlbums}
+              selectedMonthKey={selectedMonthKey}
+              onSelectMonth={setSelectedMonthKey}
+            />
+          )}
         </main>
       </div>
 
