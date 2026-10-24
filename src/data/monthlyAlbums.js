@@ -115,23 +115,23 @@ export const monthlyAlbums = [
     label: "Marzo",
     albums: [
       {
-        album: "An Undying Love for a Burning World",
-        artist: "Neurosis",
-        coverImage: "https://i.scdn.co/image/ab67616d0000b273049113d68552cc74ab025190",
-        link: "https://open.spotify.com/album/6R9JG8pkMHdGz031ceugiM",
-        favorite: true,
-        genres: ["Sludge Metal", "Post-Metal"],
-        review:
-          "Cuatro décadas después siguen sonando como el fin del mundo: sludge metal pesadísimo y atmosférico, casi religioso en su intensidad. Se entiende por qué siguen siendo una referencia después de tanto tiempo.",
-      },
-      {
         album: "Trying Times",
         artist: "James Blake",
         coverImage: "https://i.scdn.co/image/ab67616d0000b273884dd01508605dca727d8993",
         link: "https://open.spotify.com/album/16tV8wTfqPyA6Cu5dwJJPc",
+        favorite: true,
         genres: ["Electronic", "Alt R&B"],
         review:
           "Vuelve a su terreno de siempre: electrónica mínima, voz quebrada y silencios que pesan más que los graves. Melancólico pero nunca frío.",
+      },
+      {
+        album: "An Undying Love for a Burning World",
+        artist: "Neurosis",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273049113d68552cc74ab025190",
+        link: "https://open.spotify.com/album/6R9JG8pkMHdGz031ceugiM",
+        genres: ["Sludge Metal", "Post-Metal"],
+        review:
+          "Cuatro décadas después siguen sonando como el fin del mundo: sludge metal pesadísimo y atmosférico, casi religioso en su intensidad. Se entiende por qué siguen siendo una referencia después de tanto tiempo.",
       },
       {
         album: "Assumption",
@@ -171,6 +171,7 @@ export const monthlyAlbums = [
         artist: "Knumears",
         coverImage: "https://i.scdn.co/image/ab67616d0000b2737e121559fd55892273ba9c66",
         link: "https://open.spotify.com/album/3TFtQB92uZdJiYubiOb7ps",
+        favorite: true,
         genres: ["Screamo", "Post-Hardcore"],
         review:
           "Debut crudo de skramz que habla de familia y cambio, grabado con el productor de Sunbather. Emocional sin caer en lo cursi, puro SoCal screamo.",
@@ -207,7 +208,6 @@ export const monthlyAlbums = [
         artist: "Pretty Baby",
         coverImage: "https://i.scdn.co/image/ab67616d0000b2735d100a462615e02339e8c9be",
         link: "https://open.spotify.com/album/4z7YrB2DN51S91pmza2tDf",
-        favorite: true,
         genres: ["Post-Hardcore", "Post-Rock"],
         review:
           "Banda de Charlotte que mezcla post-hardcore, punk y post-rock sin quedarse quieta en ninguno. Disco sobre el duelo, hecho de pedazos que no siempre encajan pero igual suman.",

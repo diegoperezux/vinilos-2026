@@ -1,52 +1,39 @@
 import { useEffect, useState } from 'react';
-import { renderStoryImage } from '../utils/storyImage';
+import { renderStoryImage, storyFileName } from '../utils/storyImage';
 
-function fileNameFor(album, monthKey) {
-  const slug = `${album.artist}-${album.album}`
-    .normalize('NFKD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-  return `historia-${monthKey}-${slug}.png`;
-}
-
-// Dev-only tool (rendered behind import.meta.env.DEV in CoverFlow): builds
-// a story image of the album in the center and offers it for download or,
-// where the browser supports sharing files, the native share sheet — on a
-// phone that's where Instagram shows up.
-export default function ShareStory({ album, monthKey, monthLabel }) {
-  const [state, setState] = useState({ status: 'idle' });
-
-  // Free the preview's object URL when it's replaced or the dialog closes.
-  useEffect(() => {
-    if (state.status !== 'ready') return;
-    return () => URL.revokeObjectURL(state.url);
-  }, [state]);
+// Renders the story as soon as it opens, then offers download or — where
+// the browser can share files — the native share sheet, which on a phone
+// is where Instagram shows up. Shared by the monthly picks' Historia
+// button and the "Nueva historia" form.
+export function StoryPreviewDialog({ story, fileName, onClose }) {
+  const [state, setState] = useState({ status: 'loading' });
 
   useEffect(() => {
-    if (state.status === 'idle') return;
+    let cancelled = false;
+    let url = null;
+    renderStoryImage(story)
+      .then((blob) => {
+        if (cancelled) return;
+        url = URL.createObjectURL(blob);
+        const file = new File([blob], fileName, { type: 'image/png' });
+        setState({ status: 'ready', file, url });
+      })
+      .catch((err) => {
+        if (!cancelled) setState({ status: 'error', message: err.message });
+      });
+    return () => {
+      cancelled = true;
+      if (url) URL.revokeObjectURL(url);
+    };
+  }, [story, fileName]);
+
+  useEffect(() => {
     function handleKey(e) {
-      if (e.key === 'Escape') setState({ status: 'idle' });
+      if (e.key === 'Escape') onClose();
     }
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [state.status]);
-
-  async function open() {
-    setState({ status: 'loading' });
-    try {
-      const blob = await renderStoryImage({
-        album,
-        monthLabel,
-        year: monthKey.slice(0, 4),
-      });
-      const file = new File([blob], fileNameFor(album, monthKey), { type: 'image/png' });
-      setState({ status: 'ready', file, url: URL.createObjectURL(blob) });
-    } catch (err) {
-      setState({ status: 'error', message: err.message });
-    }
-  }
+  }, [onClose]);
 
   function download() {
     const a = document.createElement('a');
@@ -69,6 +56,68 @@ export default function ShareStory({ album, monthKey, monthLabel }) {
     state.status === 'ready' && navigator.canShare?.({ files: [state.file] });
 
   return (
+    <div className="story-dialog-backdrop" onClick={onClose}>
+      <div
+        className="story-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Compartir en historia"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {state.status === 'loading' && <p className="story-dialog-note">Generando historia…</p>}
+        {state.status === 'error' && (
+          <p className="story-dialog-note">No se pudo generar la imagen. {state.message}</p>
+        )}
+        {state.status === 'ready' && (
+          <>
+            <img
+              className="story-dialog-preview"
+              src={state.url}
+              alt={`Historia de ${story.album.album}`}
+            />
+            <div className="story-dialog-actions">
+              {canShareFile && (
+                <button
+                  type="button"
+                  className="story-dialog-button story-dialog-button--primary"
+                  onClick={share}
+                >
+                  Compartir
+                </button>
+              )}
+              <button
+                type="button"
+                className={`story-dialog-button${canShareFile ? '' : ' story-dialog-button--primary'}`}
+                onClick={download}
+              >
+                Descargar
+              </button>
+              <button type="button" className="story-dialog-button" onClick={onClose}>
+                Cerrar
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Dev-only (rendered behind import.meta.env.DEV in CoverFlow): story for
+// the album in the center of the CoverFlow.
+export default function ShareStory({ album, monthKey, monthLabel }) {
+  const [story, setStory] = useState(null);
+
+  function open() {
+    const year = monthKey.slice(0, 4);
+    setStory({
+      album,
+      label: album.favorite ? `Mi favorito de ${monthLabel}` : `Mi Top ${year}`,
+      heading: album.favorite ? `Mi Top ${year}` : monthLabel,
+    });
+  }
+
+  return (
     <>
       <button type="button" className="coverflow-listen-link story-trigger" onClick={open}>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -78,46 +127,12 @@ export default function ShareStory({ album, monthKey, monthLabel }) {
         Historia
       </button>
 
-      {state.status !== 'idle' && (
-        <div
-          className="story-dialog-backdrop"
-          onClick={() => setState({ status: 'idle' })}
-        >
-          <div
-            className="story-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Compartir en historia"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {state.status === 'loading' && <p className="story-dialog-note">Generando historia…</p>}
-            {state.status === 'error' && (
-              <p className="story-dialog-note">No se pudo generar la imagen. {state.message}</p>
-            )}
-            {state.status === 'ready' && (
-              <>
-                <img className="story-dialog-preview" src={state.url} alt={`Historia de ${album.album}`} />
-                <div className="story-dialog-actions">
-                  {canShareFile && (
-                    <button type="button" className="story-dialog-button story-dialog-button--primary" onClick={share}>
-                      Compartir
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    className={`story-dialog-button${canShareFile ? '' : ' story-dialog-button--primary'}`}
-                    onClick={download}
-                  >
-                    Descargar
-                  </button>
-                  <button type="button" className="story-dialog-button" onClick={() => setState({ status: 'idle' })}>
-                    Cerrar
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+      {story && (
+        <StoryPreviewDialog
+          story={story}
+          fileName={storyFileName(album, monthKey)}
+          onClose={() => setStory(null)}
+        />
       )}
     </>
   );

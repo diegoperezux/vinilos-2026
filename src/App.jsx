@@ -3,6 +3,7 @@ import { monthlyAlbums } from "./data/monthlyAlbums";
 import { currentMonthKey } from "./utils/currentMonthKey";
 import CoverFlow from "./components/CoverFlow";
 import ListeningLately from "./components/ListeningLately";
+import NewStory from "./components/NewStory";
 import { GenreIndex, GenreResults } from "./components/GenreExplorer";
 import "./App.css";
 
@@ -77,6 +78,10 @@ function App() {
           )}
         </main>
       </div>
+
+      {/* Local-only story maker for albums not on the site yet; stripped
+          from the production build since import.meta.env.DEV is false. */}
+      {import.meta.env.DEV && <NewStory />}
 
       <footer className="mobile-footer" style={{ display: "none" }}>
         <ListeningLately />

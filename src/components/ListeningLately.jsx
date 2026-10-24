@@ -1,9 +1,9 @@
 import { useRecentTrack } from './NowPlaying';
 import { useRisingAlbum } from './RisingAlbum';
 
-function EqualizerBars({ animated }) {
+function EqualizerBars({ live }) {
   return (
-    <span className={`listen-bars${animated ? ' listen-bars--live' : ''}`} aria-hidden>
+    <span className={`listen-bars${live ? ' listen-bars--live' : ''}`} aria-hidden>
       <span /><span /><span /><span />
     </span>
   );
@@ -54,7 +54,7 @@ export default function ListeningLately() {
           subtitle={track.artist}
           status={
             <>
-              <EqualizerBars animated={track.nowPlaying} />
+              <EqualizerBars live={track.nowPlaying} />
               {track.nowPlaying ? 'Escuchando ahora' : 'Última escucha'}
             </>
           }

@@ -281,7 +281,9 @@ function drawGenrePills(ctx, genres, y) {
   return y + height;
 }
 
-export async function renderStoryImage({ album, monthLabel, year }) {
+// `label` is the small spaced line on top, `heading` the big title under
+// it (e.g. "Mi favorito de Septiembre" / "Mi Top 2026").
+export async function renderStoryImage({ album, label, heading }) {
   await ensureFonts();
   const cover = await loadImage(album.coverImage);
 
@@ -293,11 +295,11 @@ export async function renderStoryImage({ album, monthLabel, year }) {
 
   drawBlurredBackdrop(ctx, cover);
 
-  // Header: what this is and which month.
-  drawSpacedLabel(ctx, album.favorite ? `Mi favorito de ${monthLabel}` : `Mi Top ${year}`, SAFE_TOP + 30);
+  // Header: what this is (monthly pick, discovery…).
+  drawSpacedLabel(ctx, label, SAFE_TOP + 30);
   ctx.font = `800 72px ${SANS}`;
   ctx.fillStyle = COLORS.title;
-  ctx.fillText(album.favorite ? `Mi Top ${year}` : monthLabel, W / 2, SAFE_TOP + 115);
+  ctx.fillText(heading, W / 2, SAFE_TOP + 115);
 
   // Cover.
   const coverSize = 600;
@@ -331,4 +333,15 @@ export async function renderStoryImage({ album, monthLabel, year }) {
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('toBlob failed'))), 'image/png');
   });
+}
+
+// Download name like historia-2026-09-chat-pile-who-loves-the-sun.png
+export function storyFileName(album, prefix) {
+  const slug = `${album.artist}-${album.album}`
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  return `historia-${prefix}-${slug}.png`;
 }

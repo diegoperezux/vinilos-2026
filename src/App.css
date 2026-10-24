@@ -403,12 +403,19 @@
   height: 5px;
   border-radius: 1px;
   background: currentColor;
+  /* Always moving, so the row reads as "listening": a slow, muted sway for
+     the last scrobble, sped up and turned green when something is playing
+     right now (--live). */
+  animation: eq-bar 1.6s ease-in-out infinite alternate;
 }
 
-/* Only bounce when something is actually playing right now. */
+.listen-bars span:nth-child(1) { animation-duration: 1.5s; animation-delay: 0s; }
+.listen-bars span:nth-child(2) { animation-duration: 1.2s; animation-delay: 0.3s; }
+.listen-bars span:nth-child(3) { animation-duration: 1.8s; animation-delay: 0.1s; }
+.listen-bars span:nth-child(4) { animation-duration: 1.35s; animation-delay: 0.45s; }
+
 .listen-bars--live span {
   background: #5bbb7b;
-  animation: eq-bar 1s ease-in-out infinite alternate;
 }
 
 .listen-bars--live span:nth-child(1) { animation-duration: 0.9s; animation-delay: 0s; }
@@ -419,6 +426,12 @@
 @keyframes eq-bar {
   0%   { height: 2px; opacity: 0.7; }
   100% { height: 9px; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listen-bars span {
+    animation: none;
+  }
 }
 
 /* ─── Footer ──────────────────────────────────────────────── */
@@ -753,6 +766,97 @@
 .story-dialog-button--primary:hover {
   background: var(--panel-accent);
   opacity: 0.85;
+}
+
+.story-dialog-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* --- New story form (dev only, see NewStory.jsx) --- */
+.new-story-trigger {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 90;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1a1408;
+  background: var(--panel-accent);
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.new-story-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: min(26rem, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 1.5rem;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.new-story-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-title);
+}
+
+.new-story-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.new-story-field input,
+.new-story-field textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--color-title);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  resize: vertical;
+}
+
+.new-story-field input:focus,
+.new-story-field textarea:focus {
+  outline: none;
+  border-color: var(--panel-accent);
+}
+
+.new-story-field small {
+  font-size: 0.72rem;
+  color: var(--color-footer-link);
+}
+
+.new-story-found {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-title);
+}
+
+.new-story-found img {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 /* Responsive */
