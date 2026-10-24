@@ -673,6 +673,88 @@
   color: #1a1408;
 }
 
+.coverflow-actions {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* --- Share to story (dev only, see ShareStory.jsx) --- */
+.story-trigger {
+  background: none;
+  cursor: pointer;
+}
+
+.story-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(3, 2, 1, 0.8);
+  backdrop-filter: blur(6px);
+}
+
+.story-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-height: 100%;
+}
+
+.story-dialog-preview {
+  /* 9:16, sized to fit the viewport with room for the buttons. */
+  height: min(75vh, 720px);
+  aspect-ratio: 9 / 16;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.story-dialog-note {
+  margin: 0;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--panel-text-muted);
+}
+
+.story-dialog-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.story-dialog-button {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--panel-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.story-dialog-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.story-dialog-button--primary {
+  background: var(--panel-accent);
+  color: #1a1408;
+}
+
+.story-dialog-button--primary:hover {
+  background: var(--panel-accent);
+  opacity: 0.85;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .layout {

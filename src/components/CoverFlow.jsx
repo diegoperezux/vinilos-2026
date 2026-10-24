@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { currentMonthKey } from '../utils/currentMonthKey';
+import ShareStory from './ShareStory';
 
 // Puts the favorite album at the true middle of the row (same number of
 // covers fanned out on each side), regardless of where it sits in the data.
@@ -230,30 +231,42 @@ function CoverFlow({ monthlyAlbums, selectedMonthKey, onSelectMonth }) {
             {active.review && <p className="coverflow-review">{active.review}</p>}
           </div>
 
-          {active.link && (
-            <a
-              href={active.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="coverflow-listen-link"
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-                <path
-                  d="M3 18v-6a9 9 0 0 1 18 0v6"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Escuchar
-            </a>
-          )}
+          <div className="coverflow-actions">
+            {active.link && (
+              <a
+                href={active.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="coverflow-listen-link"
+              >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M3 18v-6a9 9 0 0 1 18 0v6"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Escuchar
+              </a>
+            )}
+            {/* Local-only tool for making Instagram stories; stripped from
+                the production build since import.meta.env.DEV is false. */}
+            {import.meta.env.DEV && (
+              <ShareStory
+                key={active.album + active.artist}
+                album={active}
+                monthKey={selectedMonth.key}
+                monthLabel={selectedMonth.label}
+              />
+            )}
+          </div>
         </div>
       )}
     </div>
