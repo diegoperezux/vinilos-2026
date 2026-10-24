@@ -58,19 +58,26 @@ function CoverFlowItem({ item, offset, isActive, onSelect }) {
 }
 
 function MonthTabs({ months, selectedKey, onSelect }) {
+  const navRef = useRef(null);
   const activeRef = useRef(null);
   const nowKey = currentMonthKey();
 
+  // Scroll only the tab row itself — scrollIntoView would also scroll every
+  // ancestor, including the overflow-hidden .coverflow (wider than the view
+  // because of the scaled ambient backdrop), shifting the whole page sideways
+  // for months near the end of the row.
   useEffect(() => {
-    activeRef.current?.scrollIntoView({
+    const nav = navRef.current;
+    const tab = activeRef.current;
+    if (!nav || !tab) return;
+    nav.scrollTo({
+      left: tab.offsetLeft - (nav.clientWidth - tab.offsetWidth) / 2,
       behavior: 'smooth',
-      inline: 'center',
-      block: 'nearest',
     });
   }, [selectedKey]);
 
   return (
-    <nav className="month-tabs" aria-label="Meses del año">
+    <nav className="month-tabs" ref={navRef} aria-label="Meses del año">
       {months.map((month) => {
         const isActive = month.key === selectedKey;
         // The current month and any future ones haven't happened yet, so
