@@ -2,7 +2,7 @@ import { useState } from "react";
 import { monthlyAlbums } from "./data/monthlyAlbums";
 import { currentMonthKey } from "./utils/currentMonthKey";
 import CoverFlow from "./components/CoverFlow";
-import NowPlaying from "./components/NowPlaying";
+import ListeningLately from "./components/ListeningLately";
 import { GenreIndex, GenreResults } from "./components/GenreExplorer";
 import "./App.css";
 
@@ -20,6 +20,21 @@ function defaultMonthKey(months) {
   return months[0].key;
 }
 
+function Credit() {
+  return (
+    <p className="sidebar-credit">
+      Made with love by{" "}
+      <a
+        href="https://diegoperezux.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Diego
+      </a>
+    </p>
+  );
+}
+
 function App() {
   const [selectedMonthKey, setSelectedMonthKey] = useState(() =>
     defaultMonthKey(monthlyAlbums),
@@ -32,25 +47,17 @@ function App() {
         <aside className="sidebar">
           <div className="sidebar-content">
             <h1 className="shelf-title">Mi Top 2026</h1>
-            <p className="sidebar-about">
-              Mis discos favoritos, mes a mes, durante este 2026.
-            </p>
-            <a
-              href="https://diegoperezux.vercel.app/"
-              className="sidebar-credit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Música seleccionada por Diego →
-            </a>
+            <p className="sidebar-about">Mis discos favoritos, mes a mes.</p>
 
             <GenreIndex
+              monthlyAlbums={monthlyAlbums}
               activeGroup={selectedGenreGroup}
               onSelectGroup={setSelectedGenreGroup}
             />
           </div>
           <footer className="site-footer">
-            <NowPlaying />
+            <ListeningLately />
+            <Credit />
           </footer>
         </aside>
 
@@ -72,7 +79,8 @@ function App() {
       </div>
 
       <footer className="mobile-footer" style={{ display: "none" }}>
-        <NowPlaying />
+        <ListeningLately />
+        <Credit />
       </footer>
     </div>
   );

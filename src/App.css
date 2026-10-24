@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 3rem 2rem;
+  padding: 3rem 2rem 1.5rem;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -55,33 +55,51 @@
   min-height: 0;
 }
 
+/* Not shown — the intro line carries the page visually — but kept as the
+   page's only <h1> for screen readers and search engines. */
 .shelf-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-title);
-  letter-spacing: -0.03em;
-  margin: 0;
-  line-height: 1.15;
-  transition: color 0.3s;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
+/* With the title hidden this line opens the sidebar, so it gets heading-ish
+   weight and the bright title color. */
 .sidebar-about {
-  font-size: 0.88rem;
-  color: var(--color-muted);
-  line-height: 1.6;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-title);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
   margin: 0;
   transition: color 0.3s;
 }
 
+/* Small sign-off at the very bottom of the sidebar (and mobile footer). */
 .sidebar-credit {
-  font-size: 0.8rem;
+  margin: 0;
+  font-size: 0.75rem;
   color: var(--color-footer-link);
-  text-decoration: none;
-  transition: color 0.15s;
 }
 
-.sidebar-credit:hover {
-  color: var(--color-footer-hover);
+.sidebar-credit a {
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-footer-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.sidebar-credit a:hover {
+  color: var(--color-title);
+  text-decoration-color: currentColor;
 }
 
 /* ─── Genre index (sidebar) ───────────────────────────────── */
@@ -102,38 +120,58 @@
   margin: 0;
 }
 
+/* A plain index (name left, album count right) rather than pills — reads
+   as a table of contents and keeps long names on one aligned line. */
 .genre-list {
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 0.4rem;
+  flex-direction: column;
   overflow-y: auto;
   min-height: 0;
-  padding-right: 0.25rem;
-  margin-right: -0.25rem;
+  margin: 0 -0.5rem;
 }
 
 .genre-chip {
-  font-family: 'Space Mono', 'Courier New', monospace;
-  font-size: 0.7rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
   color: var(--color-muted);
   background: none;
-  border: 1px solid var(--sidebar-border);
-  border-radius: 999px;
-  padding: 0.25rem 0.65rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s;
 }
 
-.genre-chip:hover {
-  color: var(--color-title);
-  border-color: var(--color-footer-link);
+.genre-chip-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+.genre-chip-count {
+  flex-shrink: 0;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--color-footer-link);
+  transition: color 0.15s;
+}
+
+.genre-chip:hover,
 .genre-chip--active {
   color: var(--color-title);
   background: var(--sidebar-hover-bg);
-  border-color: var(--color-footer-link);
+}
+
+.genre-chip:hover .genre-chip-count,
+.genre-chip--active .genre-chip-count {
+  color: var(--color-muted);
 }
 
 /* ─── Genre results view (replaces CoverFlow) ─────────────── */
@@ -272,79 +310,115 @@
   text-decoration: underline;
 }
 
-/* ─── Now Playing ─────────────────────────────────────────── */
-.now-playing {
+/* ─── Listening lately (Last.fm) ─────────────────────────── */
+.listening {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding-bottom: 0.75rem;
-  text-decoration: none;
-  border-radius: 6px;
-  padding: 0.5rem;
-  margin: -0.5rem;
-  margin-bottom: 0.25rem;
-  transition: background 0.15s ease, opacity 0.15s ease;
+  gap: 0.35rem;
 }
 
-.now-playing:hover {
-  background: rgba(255, 255, 255, 0.06);
-  opacity: 0.85;
-}
-
-.now-playing-status {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+.listening-title {
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--color-muted);
+  margin: 0 0 0.25rem;
 }
 
-.now-playing-bars {
+.listen-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.4rem 0.5rem;
+  margin: 0 -0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.listen-row:hover {
+  background: var(--sidebar-hover-bg);
+}
+
+.listen-row-cover {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.listen-row-cover--empty {
+  background: var(--sidebar-hover-bg);
+}
+
+.listen-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.listen-row-title,
+.listen-row-subtitle,
+.listen-row-status {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listen-row-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-title);
+}
+
+.listen-row-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.listen-row-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+  font-size: 0.7rem;
+  color: var(--color-footer-link);
+}
+
+.listen-bars {
   display: flex;
   align-items: flex-end;
-  gap: 2px;
-  height: 12px;
+  gap: 1.5px;
+  height: 9px;
   flex-shrink: 0;
 }
 
-.now-playing-bars span {
+.listen-bars span {
   display: block;
-  width: 3px;
+  width: 2px;
+  height: 5px;
   border-radius: 1px;
+  background: currentColor;
+}
+
+/* Only bounce when something is actually playing right now. */
+.listen-bars--live span {
   background: #5bbb7b;
   animation: eq-bar 1s ease-in-out infinite alternate;
 }
 
-.now-playing-bars span:nth-child(1) { animation-duration: 0.9s; animation-delay: 0s; }
-.now-playing-bars span:nth-child(2) { animation-duration: 0.7s; animation-delay: 0.15s; }
-.now-playing-bars span:nth-child(3) { animation-duration: 1.1s; animation-delay: 0.05s; }
-.now-playing-bars span:nth-child(4) { animation-duration: 0.8s; animation-delay: 0.25s; }
+.listen-bars--live span:nth-child(1) { animation-duration: 0.9s; animation-delay: 0s; }
+.listen-bars--live span:nth-child(2) { animation-duration: 0.7s; animation-delay: 0.15s; }
+.listen-bars--live span:nth-child(3) { animation-duration: 1.1s; animation-delay: 0.05s; }
+.listen-bars--live span:nth-child(4) { animation-duration: 0.8s; animation-delay: 0.25s; }
 
 @keyframes eq-bar {
-  0%   { height: 3px;  opacity: 0.7; }
-  100% { height: 12px; opacity: 1; }
-}
-
-.now-playing-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-title);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.3s;
-}
-
-.now-playing-artist {
-  font-size: 0.8rem;
-  color: var(--color-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.3s;
+  0%   { height: 2px; opacity: 0.7; }
+  100% { height: 9px; opacity: 1; }
 }
 
 /* ─── Footer ──────────────────────────────────────────────── */
@@ -623,10 +697,6 @@
     gap: 0.15rem;
   }
 
-  .shelf-title {
-    font-size: 1.5rem;
-  }
-
   /* Sidebar is a compact static bar on mobile, not a fixed-height column,
      so the genre list can't scroll vertically inside it — make it a single
      horizontally-scrolling row instead, like the month tabs. */
@@ -637,7 +707,9 @@
   }
 
   .genre-list {
+    flex-direction: row;
     flex-wrap: nowrap;
+    gap: 0.25rem;
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
@@ -654,6 +726,8 @@
 
   .genre-chip {
     flex: none;
+    width: auto;
+    gap: 0.4rem;
   }
 
   .genre-view {

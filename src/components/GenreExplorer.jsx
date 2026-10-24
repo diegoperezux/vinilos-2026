@@ -2,21 +2,25 @@ import { getGenreGroupNames, getAlbumsByGenreGroup } from "../utils/genreGroups"
 
 // Sidebar list of the broad genre umbrellas (Punk, Metal, Electronic...).
 // Clicking one opens GenreResults in the main panel instead of the CoverFlow.
-export function GenreIndex({ activeGroup, onSelectGroup }) {
-  const groups = getGenreGroupNames();
+export function GenreIndex({ monthlyAlbums, activeGroup, onSelectGroup }) {
+  const groups = getGenreGroupNames().map((group) => ({
+    group,
+    count: getAlbumsByGenreGroup(monthlyAlbums, group).length,
+  }));
 
   return (
     <div className="genre-index">
       <p className="genre-index-title">Géneros</p>
       <div className="genre-list">
-        {groups.map((group) => (
+        {groups.map(({ group, count }) => (
           <button
             key={group}
             type="button"
             className={`genre-chip${group === activeGroup ? " genre-chip--active" : ""}`}
             onClick={() => onSelectGroup(group)}
           >
-            {group}
+            <span className="genre-chip-name">{group}</span>
+            <span className="genre-chip-count">{count}</span>
           </button>
         ))}
       </div>

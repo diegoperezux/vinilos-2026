@@ -3,6 +3,9 @@ import { LASTFM_API_KEY, LASTFM_USER } from '../utils/lastfmConfig';
 
 const POLL_MS = 30_000;
 
+// Last.fm's grey star placeholder for tracks without artwork.
+const PLACEHOLDER_IMAGE = '2a96cbd8b46e442fc41c2b86b821562f';
+
 async function fetchRecentTrack() {
   const url = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=1`;
   const res = await fetch(url);
@@ -10,14 +13,17 @@ async function fetchRecentTrack() {
   const data = await res.json();
   const track = data.recenttracks?.track?.[0];
   if (!track) return null;
+  const image = track.image?.find((i) => i.size === 'extralarge')?.['#text'];
   return {
     title: track.name,
     artist: track.artist['#text'],
     nowPlaying: track['@attr']?.nowplaying === 'true',
+    url: track.url,
+    image: image && !image.includes(PLACEHOLDER_IMAGE) ? image : null,
   };
 }
 
-export default function NowPlaying() {
+export function useRecentTrack() {
   const [track, setTrack] = useState(null);
 
   useEffect(() => {
@@ -28,7 +34,7 @@ export default function NowPlaying() {
         const result = await fetchRecentTrack();
         if (!cancelled) setTrack(result);
       } catch {
-        // silently fail — widget just won't render
+        // silently fail — row just won't render
       }
     };
 
@@ -37,24 +43,5 @@ export default function NowPlaying() {
     return () => { cancelled = true; clearInterval(id); };
   }, []);
 
-  if (!track) return null;
-
-  return (
-    <a
-      className="now-playing"
-      href="https://www.last.fm/user/DiegoCorona"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Ver perfil de Last.fm"
-    >
-      <span className="now-playing-status">
-        <span className="now-playing-bars" aria-hidden>
-          <span /><span /><span /><span />
-        </span>
-        {track.nowPlaying ? 'Escuchando ahora' : 'Última escucha'}
-      </span>
-      <span className="now-playing-title">{track.title}</span>
-      <span className="now-playing-artist">{track.artist}</span>
-    </a>
-  );
+  return track;
 }
