@@ -697,37 +697,10 @@
     gap: 0.15rem;
   }
 
-  /* Sidebar is a compact static bar on mobile, not a fixed-height column,
-     so the genre list can't scroll vertically inside it — make it a single
-     horizontally-scrolling row instead, like the month tabs. */
+  /* The genre index is a desktop-only way in; on mobile the top bar stays
+     just the intro so the CoverFlow starts higher. */
   .genre-index {
-    flex: none;
-    gap: 0.35rem;
-    margin-top: 0.4rem;
-  }
-
-  .genre-list {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 0.25rem;
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0.15rem 0;
-    margin-right: 0;
-    mask-image: linear-gradient(to right, transparent, black 3%, black 94%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 94%, transparent);
-  }
-
-  .genre-list::-webkit-scrollbar {
     display: none;
-  }
-
-  .genre-chip {
-    flex: none;
-    width: auto;
-    gap: 0.4rem;
   }
 
   .genre-view {
