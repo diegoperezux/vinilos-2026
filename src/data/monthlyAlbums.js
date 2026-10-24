@@ -422,7 +422,58 @@ export const monthlyAlbums = [
       },
     ],
   },
-  { key: "2026-09", label: "Septiembre", albums: [] },
+  {
+    key: "2026-09",
+    label: "Septiembre",
+    albums: [
+      {
+        album: "Who Loves the Sun",
+        artist: "Chat Pile",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273ab1229a45362b56b4d06a405",
+        link: "https://open.spotify.com/album/2ITnf8HOokOJxjv483Dszk",
+        favorite: true,
+        genres: ["Noise Rock", "Sludge Metal"],
+        review:
+          "Tercer disco de la banda de Oklahoma City, igual de asfixiante que los anteriores: sludge y noise rock con Raygun Busch gritando contra la IA, el cambio climático y la élite. Es incómodo a propósito, y por eso funciona.",
+      },
+      {
+        album: "Nine",
+        artist: "Russian Circles",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b2737540118e6b0cc263a01f3c17",
+        link: "https://open.spotify.com/album/7tt3vmIfxLV30N1UJPmTNf",
+        genres: ["Post-Metal", "Post-Rock"],
+        review:
+          "Noveno disco del trío instrumental de Chicago, otra vez con Kurt Ballou en la consola. Riffs enormes y pasajes que se toman su tiempo para crecer; post-metal sin una sola palabra y sin que haga falta.",
+      },
+      {
+        album: "Distance in Static",
+        artist: "Bonobo",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273dd6e0f2e911f3d04f576aba9",
+        link: "https://open.spotify.com/album/2FMGW8WrG0BE0ZimHbHw2M",
+        genres: ["Electronic", "Downtempo"],
+        review:
+          "Grabado entre Los Ángeles, Tokio, Londres y el rancho de Neil Young, con voces de Arooj Aftab, Nilüfer Yanya, Ichiko Aoba y Joy Crookes. Electrónica cálida y viajera; él mismo ha dicho que podría ser su último disco largo en un tiempo.",
+      },
+      {
+        album: "From A Distance",
+        artist: "156/Silence",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273eefee0a77a434fa4cc5c50c7",
+        link: "https://open.spotify.com/album/6i2dRG24s6ocnvWZPPTYDG",
+        genres: ["Metalcore", "Post-Hardcore"],
+        review:
+          "Sexto disco de la banda de Pittsburgh y el primero con Pure Noise. Metalcore más oscuro y cinematográfico que People Watching, con Mike Hranica (The Devil Wears Prada) y Alex Reade (Make Them Suffer) de invitados.",
+      },
+      {
+        album: "Hotel Usona",
+        artist: "Protomartyr",
+        coverImage: "https://i.scdn.co/image/ab67616d0000b273ea6e230375039568a2c13000",
+        link: "https://open.spotify.com/album/1VFSC60Y9e1DxIvSvZdane",
+        genres: ["Post-Punk"],
+        review:
+          "Séptimo disco de los de Detroit, grabado con Dave Fridmann. Un hotel viejo que se cae a pedazos como metáfora de un país en declive, con Joe Casey más amargo y lúcido que nunca. Hasta Iggy Pop escribió el texto de presentación.",
+      },
+    ],
+  },
   { key: "2026-10", label: "Octubre", albums: [] },
   { key: "2026-11", label: "Noviembre", albums: [] },
   { key: "2026-12", label: "Diciembre", albums: [] },

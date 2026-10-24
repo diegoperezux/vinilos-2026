@@ -34,7 +34,7 @@ export const GENRE_GROUPS = {
     "Slowcore",
   ],
   "Folk & Singer-Songwriter": ["Folk", "Indie Folk", "Psych Folk", "Singer-Songwriter", "Americana"],
-  Electronic: ["IDM", "Ambient", "Electronic", "Synthwave", "Futurepop", "EBM"],
+  Electronic: ["IDM", "Ambient", "Electronic", "Synthwave", "Futurepop", "EBM", "Downtempo"],
   "Jazz & Other": ["Jazz", "Minimalism", "Neo-Psicodelia", "Alt R&B", "Disco"],
 };
 
