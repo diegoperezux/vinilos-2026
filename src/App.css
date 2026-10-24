@@ -681,20 +681,51 @@
        them as two separate rows, so that min-height would get split
        between both and stretch the sidebar with empty space. */
     min-height: 0;
+    /* Containing block for the CoverFlow's blurred ambient (see .coverflow
+       below), so the album-colored backdrop runs behind the header too and
+       the top of the page reads as one surface instead of a separate bar. */
+    position: relative;
+    overflow: hidden;
+    background: var(--panel-bg);
   }
 
   .sidebar {
-    position: static;
+    position: relative;
+    z-index: 1;
     height: auto;
     min-width: 0;
-    padding: 0.85rem 1.25rem 0.6rem;
+    padding: 1.25rem 1.25rem 0;
+    background: transparent;
     border-right: none;
-    border-bottom: 1px solid var(--sidebar-border);
     justify-content: flex-start;
   }
 
   .sidebar-content {
     gap: 0.15rem;
+  }
+
+  /* Desktop hides the title and lets the intro line lead; on mobile the
+     header needs the name back so the intro isn't left floating alone. */
+  .shelf-title {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--color-title);
+  }
+
+  .sidebar-about {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--color-muted);
   }
 
   /* The genre index is a desktop-only way in; on mobile the top bar stays
@@ -733,8 +764,12 @@
     font-size: 0.95rem;
   }
 
+  /* Static so the ambient's containing block becomes .layout (it then
+     spans the header as well); visible so it isn't clipped to this box. */
   .coverflow {
-    padding: 1rem 1rem 2.5rem;
+    position: static;
+    overflow: visible;
+    padding: 0.75rem 1rem 2.5rem;
   }
 
   .coverflow-stage {
